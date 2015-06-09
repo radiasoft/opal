@@ -12,16 +12,16 @@ try:
     weights = np.array([10., 15.])
     pos = np.zeros((2,2))
     vel = np.zeros((2,2))
-    pos[0,0] = 1.
+    pos[0,0] = 0.
     pos[0,1] = 0.
     pos[1,0] = -0.35
-    pos[1,1] = -0.1
+    pos[1,1] = -0.
 
     ptclsize = 0.01
 
     size_array = [ptclsize]*2
     params_dict = {}
-    params_dict['n_modes'] = [100]*2
+    params_dict['n_modes'] = [10]*2
     params_dict['delta k'] = [0.1/ptclsize]*2
     params_dict['dimensions'] = 2
 
@@ -35,9 +35,30 @@ try:
                           (size_array[dim]*k_modes[:,dim])**2
 
     # computes the Fourier components for each particle
-    fourier = np.exp(1.j*np.dot(pos, k_modes.T))
+    fourier = np.exp(-1.j*np.dot(pos, k_modes.T))
     fourier *= shape_function
     rho = np.dot(weights, fourier)
+
+    kxarray = k_modes[:,0]
+    kyarray = k_modes[:,1]
+
+    KX, KY = np.meshgrid(kxarray, kyarray)
+
+    rhotilde = 0.
+    myshapefunction = 4.*(1-np.cos(size_array[0]*KX))*(1-np.cos(size_array[
+        1])*KY)/(size_array[0]*KX*size_array[1]*KY)**2
+
+    for idx in range(0, np.shape(pos)[0]):
+        rhotilde += np.exp(1.j*pos[idx,0]*KX)*\
+                    np.exp(1.j*pos[idx,1]*KY)*\
+                    myshapefunction
+
+    plt.contourf(KX, KY, rhotilde.real)
+    plt.show()
+    plt.clf()
+    plt.contourf(KX, KY, rhotilde.imag)
+    plt.show()
+    plt.clf()
 
     phi = my_fields.compute_fields(rho)
 
@@ -46,25 +67,20 @@ try:
 
     XX, YY = np.meshgrid(x, y)
 
-    kxarray = k_modes[:,0]
-    kyarray = k_modes[:,1]
-
     phiofx = 0.
     for idx in range(0, np.shape(kxarray)[0]):
         phiofx += phi[idx]*\
-                  np.exp(-1.j*XX*kxarray[idx])*\
-                  np.exp(-1.j*YY*kyarray[idx])
+                  np.exp(1.j*XX*kxarray[idx])*\
+                  np.exp(1.j*YY*kyarray[idx])
 
     rhoofx = 0.
     for idx in range(0, np.shape(kxarray)[0]):
         rhoofx += rho[idx]*\
-                  np.exp(-1.j*XX*kxarray[idx])*\
-                  np.exp(-1.j*YY*kyarray[idx])
+                  np.exp(1.j*XX*kxarray[idx])*\
+                  np.exp(1.j*YY*kyarray[idx])
 
-    print rhoofx
-
-    plt.contourf(XX, YY, rhoofx)
-    plt.show()
+    #plt.contourf(XX, YY, phiofx)
+    #plt.show()
 
 except:
 
