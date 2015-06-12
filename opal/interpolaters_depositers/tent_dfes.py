@@ -86,14 +86,9 @@ class tent_dfes:
             electrostatic systems.
         """
 
-        phase = np.dot(pos, self.k_modes.T)
-
         fourier = np.exp(1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
-        print 'fourier =', fourier
-        print 'charge =', charge
         rho = np.dot(charge, fourier)
-        print 'rho =', rho
 
         #plt.plot(self.k_modes, np.real(rho)) #, s=1)
         #plt.plot(self.k_modes, np.imag(rho))
