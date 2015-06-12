@@ -90,12 +90,6 @@ class tent_dfes:
         fourier *= self.shape_function
         rho = np.dot(charge, fourier)
 
-        #plt.plot(self.k_modes, np.real(rho)) #, s=1)
-        #plt.plot(self.k_modes, np.imag(rho))
-        #plt.ylim([min(rho), max(rho)])
-        #plt.show()
-        #plt.plot(x, density)
-        #plt.show()
         self.fields.compute_fields(rho)
 
         return rho

@@ -6,18 +6,18 @@ try:
     import numpy as np
     from matplotlib import pyplot as plt
 
-    weights = np.array([10., 15., 5.])
-    pos = np.zeros((3,2))
-    vel = np.zeros((3,2))
+    weights = np.array([10., 15.]) #, 5.])
+    pos = np.zeros((2,2))
+    vel = np.zeros((2,2))
     pos[0,0] = 0.
     pos[0,1] = 0.
     pos[1,0] = -0.35
     pos[1,1] = -0.15
-    pos[2,0] = 1.
-    pos[2,1] = 0.5
+#    pos[2,0] = 1.
+#    pos[2,1] = 0.5
 
     ptclsize = 0.01
-    nmodes = 3
+    nmodes = 100
 
     size_array = [ptclsize]*2
     params_dict = {}
@@ -82,17 +82,18 @@ try:
 
     XX, YY = np.meshgrid(x, y)
 
-    r_vector = np.array([XX, YY])
-
     mydensity = 0.
-    phase = 0.
     total_modes = np.shape(k_vectors)[0]
     for idx in range(0, total_modes):
-        phase += XX*k_vectors[idx,0] + YY*k_vectors[idx,1]
+        phase = XX*k_vectors[idx,0] + YY*k_vectors[idx,1]
         mydensity += rho[idx]*np.exp(-1.j*phase)
 
-    #plt.contourf(XX, YY, phase)
-    #plt.show()
+    mydensity /= (2*np.pi)**2
+
+    plt.contourf(XX, YY, mydensity.real)
+    plt.colorbar()
+    plt.show()
+    plt.clf()
 
 
 except:
