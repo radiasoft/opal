@@ -1,5 +1,6 @@
 __author__ = 'swebb'
 
+failed = False
 
 try:
     from opal.interpolaters_depositers import tent_dfes
@@ -7,24 +8,25 @@ try:
     from matplotlib import pyplot as plt
 
     weights = np.array([10., 15.]) #, 5.])
-    pos = np.zeros((2,2))
-    vel = np.zeros((2,2))
-    pos[0,0] = 0.
-    pos[0,1] = 0.
-    pos[1,0] = -0.35
-    pos[1,1] = -0.15
-#    pos[2,0] = 1.
-#    pos[2,1] = 0.5
+
 
     ptclsize = 0.01
-    nmodes = 100
+    nmodes = 2
+    dimension = 2
 
-    size_array = [ptclsize]*2
+    pos = np.zeros((2,dimension))
+    vel = np.zeros((2,dimension))
+    pos[0,0] = 0.35
+    pos[0,1] = 0.
+    pos[1,0] = 0.
+    pos[1,1] = -0.15
+
+    size_array = [ptclsize]*dimension
     params_dict = {}
-    params_dict['n_modes'] = [nmodes]*2
-    params_dict['delta k'] = [0.1/ptclsize]*2
-    params_dict['dimensions'] = 2
-    params_dict['particle size'] = [ptclsize]*2
+    params_dict['n_modes'] = [nmodes]*dimension
+    params_dict['delta k'] = [0.1/ptclsize]*dimension
+    params_dict['dimensions'] = dimension
+    params_dict['particle size'] = [ptclsize]*dimension
 
     # Fake class to emulate the spectral field solver
     class dummy_fields:
@@ -77,24 +79,28 @@ try:
     k_vectors = my_dummy_field.get_kvectors()
     rho = my_depositer.deposit_sources(pos, vel, weights)
 
-    x = np.linspace(-2., 2.)
-    y = np.linspace(-2., 2.)
+    rho_expected = np.array([  8.70576717e-14 +4.30717519j,
+                               2.81915491e-14+23.01316777j,
+                               2.81915491e-14 +4.60263355j,
+                               8.70576717e-14+21.53587596j,
+                               5.83559083e-14-23.01316777j,
+                               -6.92674107e-15 -4.91835941j,
+                               -6.92674107e-15-24.59179705j,
+                               5.83559083e-14 -4.60263355j,
+                               5.83559083e-14 +4.60263355j,
+                               -6.92674107e-15+24.59179705j,
+                               -6.92674107e-15 +4.91835941j,
+                               5.83559083e-14+23.01316777j,
+                               8.70576717e-14-21.53587596j,
+                               2.81915491e-14 -4.60263355j,
+                               2.81915491e-14-23.01316777j,
+                               8.70576717e-14 -4.30717519j])
 
-    XX, YY = np.meshgrid(x, y)
+    testvalue = np.abs(np.dot(rho-rho_expected,rho-rho_expected))/\
+                np.abs(np.dot(rho, rho))
 
-    mydensity = 0.
-    total_modes = np.shape(k_vectors)[0]
-    for idx in range(0, total_modes):
-        phase = XX*k_vectors[idx,0] + YY*k_vectors[idx,1]
-        mydensity += rho[idx]*np.exp(-1.j*phase)
-
-    mydensity /= (2*np.pi)**2
-
-    plt.contourf(XX, YY, mydensity.real)
-    plt.colorbar()
-    plt.show()
-    plt.clf()
-
+    if testvalue > 1.e-16:
+        failed = True
 
 except:
     raise
