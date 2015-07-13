@@ -103,4 +103,5 @@ try:
         failed = True
 
 except:
+    print 'tent_dfes failed tests'
     raise

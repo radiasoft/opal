@@ -6,81 +6,52 @@ try:
     from matplotlib import pyplot as plt
     import numpy as np
 
-    # test has to emulate the interpolater/depositer regarding shape functions
-    # Should create two point charges of different weight at two different
-    # locations, with charges 1. and 1.5.
-    weights = np.array([10., 15.])
-    pos = np.zeros((2,2))
-    vel = np.zeros((2,2))
-    pos[0,0] = 0.
-    pos[0,1] = 0.
-    pos[1,0] = -0.35
-    pos[1,1] = -0.
+    dimensions = 2
+    dk = 0.1
+    nmodes = 2
+    pd = {}
+    pd['dimensions'] = dimensions
+    pd['delta k'] = np.array([dk]*dimensions)
+    pd['n_modes'] = np.array([nmodes]*dimensions)
 
-    ptclsize = 0.01
+    es_solver = dfes.discrete_fourier_electrostatic(pd)
 
-    size_array = [ptclsize]*2
-    params_dict = {}
-    params_dict['n_modes'] = [10]*2
-    params_dict['delta k'] = [0.1/ptclsize]*2
-    params_dict['dimensions'] = 2
+    mykvectors = es_solver.get_kvectors()
+    nkvecs = np.shape(mykvectors)[0]
+    rho = np.zeros(nkvecs)
 
-    my_fields = dfes.discrete_fourier_electrostatic(params_dict)
+    ksquared = np.zeros(nkvecs)
 
-    # Compute the charge density in the Fourier basis
-    shape_function = 1.
-    k_modes = my_fields.get_kvectors()
-    for dim in range(0, np.shape(k_modes)[1]):
-        shape_function *= 2.*(1.-np.cos(size_array[dim]*k_modes[:,dim]))/\
-                          (size_array[dim]*k_modes[:,dim])**2
+    for idx in range(0, nkvecs):
+        ksquared[idx] = np.dot(mykvectors[idx], mykvectors[idx])
+        rho[idx] = 1.*idx
+        # This is an unphysical rho, but is a simple test
+        # that phi computes the right arithmetic
 
-    # computes the Fourier components for each particle
-    fourier = np.exp(-1.j*np.dot(pos, k_modes.T))
-    fourier *= shape_function
-    rho = np.dot(weights, fourier)
+    phi_expected = np.array([  -0.,
+                               -12.73239545,
+                               -25.46479089,
+                               -21.22065908,
+                               -50.92958179,
+                               -318.30988618,
+                               -381.97186342,
+                               -89.12676813,
+                               -101.85916358,
+                               -572.95779513,
+                               -636.61977237,
+                               -140.05634992,
+                               -84.88263632,
+                               -165.52114082,
+                               -178.25353626,
+                               -106.10329539])
 
-    kxarray = k_modes[:,0]
-    kyarray = k_modes[:,1]
+    phi = es_solver.compute_fields(rho)
 
-    KX, KY = np.meshgrid(kxarray, kyarray)
+    error = abs(phi - phi_expected)
+    for idx in range(0,nkvecs):
+        if error[idx] > 1.e-8:
+            failed = True
 
-    rhotilde = 0.
-    myshapefunction = 4.*(1-np.cos(size_array[0]*KX))*(1-np.cos(size_array[
-        1])*KY)/(size_array[0]*KX*size_array[1]*KY)**2
-
-    for idx in range(0, np.shape(pos)[0]):
-        rhotilde += np.exp(1.j*pos[idx,0]*KX)*\
-                    np.exp(1.j*pos[idx,1]*KY)*\
-                    myshapefunction
-
-    plt.contourf(KX, KY, rhotilde.real)
-    plt.show()
-    plt.clf()
-    plt.contourf(KX, KY, rhotilde.imag)
-    plt.show()
-    plt.clf()
-
-    phi = my_fields.compute_fields(rho)
-
-    x = np.linspace(-2., 2.)
-    y = np.linspace(-2., 2.)
-
-    XX, YY = np.meshgrid(x, y)
-
-    phiofx = 0.
-    for idx in range(0, np.shape(kxarray)[0]):
-        phiofx += phi[idx]*\
-                  np.exp(1.j*XX*kxarray[idx])*\
-                  np.exp(1.j*YY*kyarray[idx])
-
-    rhoofx = 0.
-    for idx in range(0, np.shape(kxarray)[0]):
-        rhoofx += rho[idx]*\
-                  np.exp(1.j*XX*kxarray[idx])*\
-                  np.exp(1.j*YY*kyarray[idx])
-
-    #plt.contourf(XX, YY, phiofx)
-    #plt.show()
 
 except:
 

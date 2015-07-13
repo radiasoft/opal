@@ -48,11 +48,6 @@ class discrete_fourier_electrostatic:
         """
 
         self.phi = -4.*np.pi*rho/self.k_squared
-        #plt.plot(np.reshape(self.k_vectors, np.shape(self.k_vectors)[0]),
-        #         np.real(self.phi))
-        #plt.plot(np.reshape(self.k_vectors, np.shape(self.k_vectors)[0]),
-        #         np.imag(self.phi))
-        #plt.show()
         return self.phi
 
 
