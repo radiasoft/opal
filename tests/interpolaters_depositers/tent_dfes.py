@@ -66,8 +66,13 @@ try:
             return self.k_vectors
 
         def compute_fields(self, rho):
+            self.phi = -4.*np.pi*rho/(self.k_squared)
 
-            return 0.
+            return self.phi
+
+        def get_fields(self):
+
+            return self.phi
 
         def get_type(self):
 
@@ -101,6 +106,10 @@ try:
 
     if testvalue > 1.e-16:
         failed = True
+
+    # Test the force calculation
+
+    E, B = my_depositer.compute_forces(pos, vel)
 
 except:
     print 'tent_dfes failed tests'
