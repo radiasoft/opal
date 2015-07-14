@@ -107,10 +107,6 @@ try:
     if testvalue > 1.e-16:
         failed = True
 
-    # Test the force calculation
-
-    E, B = my_depositer.compute_forces(pos, vel)
-
 except:
     print 'tent_dfes failed tests'
     raise
