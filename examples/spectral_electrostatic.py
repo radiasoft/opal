@@ -6,6 +6,7 @@ Coulomb explosion in two dimensions.
 from opal.fields import discrete_fourier_electrostatic as dfe
 from opal.interpolaters_depositers import tent_dfes as depinterp
 from opal.particles import non_rel_ptcl as ptcls
+from opal.boundaries import particle_boundaries
 
 from matplotlib import pyplot as plt
 
@@ -18,12 +19,12 @@ import numpy as np
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 0.5
-nsteps = 100
+dt = 0.01
+nsteps = 1000
 
 # Particle properties
-num_particles = 1000000
-macro_weight = 500000
+num_particles = 2
+macro_weight = 1
 num_macro = num_particles/macro_weight
 
 vel_spread = 1. #cm/s
@@ -77,6 +78,8 @@ sim_parameters['delta k'] = 1/sim_parameters['particle size']
 the_depinterp = depinterp.tent_dfes(sim_parameters)
 the_particles = ptcls.non_rel_ptcl(sim_parameters)
 the_fields    = dfe.discrete_fourier_electrostatic(sim_parameters)
+the_boundary  = particle_boundaries.particle_boundaries(sim_parameters)
+the_boundary.add_boundary(my_boundary)
 the_depinterp.add_field(the_fields)
 
 # generate the particle distribution
@@ -105,12 +108,16 @@ y = []
 the_particles.half_move_back()
 for idx in range(0, nsteps):
     the_particles.move()
-    the_particles.deposit(the_depinterp)
-    the_particles.accelerate(the_depinterp)
+    #the_particles.deposit(the_depinterp)
+    #the_particles.accelerate(the_depinterp)
     if idx%10 == 0:
         pos, vel = the_particles.get_particles()
         x.append(pos[1, 0])
         y.append(pos[1, 1])
+
+    the_boundary.apply_boundary(the_particles)
+
+print x
 
 plt.scatter(x, y)
 plt.show()

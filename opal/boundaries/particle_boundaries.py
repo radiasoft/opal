@@ -2,7 +2,7 @@ __author__ = 'swebb'
 
 import numpy as np
 
-class periodic_boundaries:
+class particle_boundaries:
 
 
     def __init__(self, pd):
