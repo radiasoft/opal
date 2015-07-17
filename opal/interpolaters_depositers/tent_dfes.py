@@ -61,7 +61,6 @@ class tent_dfes:
 
         for idx in range(0, np.shape(vel)[0]):
             # compute e^-ikx first, then add the coefficients and vectors
-            phase = np.dot(pos[idx], self.k_modes.T)
             fourier = np.exp(1.j*(np.dot(pos[idx], self.k_modes.T)))
             fourier *= coeffs
             efield[idx] = np.dot(fourier, self.k_modes)

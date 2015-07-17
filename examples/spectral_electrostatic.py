@@ -20,7 +20,7 @@ import numpy as np
 
 dimensions = 2
 dt = 1.e-10
-nsteps = 1000
+nsteps = 1
 
 # Particle properties
 num_particles = 2
@@ -48,7 +48,7 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 10
+n_modes = 100
 delta_k = 2*np.pi/simulation_lengths
 macro_size = 0.01
 
@@ -100,7 +100,7 @@ weight.append(1.)
 the_particles.add_particle(pos, vel)
 pos = [0.5, 0.]
 vel = [0.2, -0.1]
-weight.append(-2.)
+weight.append(-1.)
 the_particles.add_particle(pos, vel)
 weights = np.array(weight)
 # Run the simulation
@@ -119,6 +119,7 @@ for idx in range(0, nsteps):
                                                 the_particles.vel)
     the_particles.accelerate(the_depinterp)
     if idx%10 == 0:
+        print acceleration
         pos, vel = the_particles.get_particles()
         x.append(pos[1, 0])
         y.append(pos[1, 1])
