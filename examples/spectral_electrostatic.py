@@ -5,6 +5,9 @@ Coulomb explosion in two dimensions.
 """
 from opal.fields import discrete_fourier_electrostatic as dfe
 from opal.interpolaters_depositers import tent_dfes as depinterp
+from opal.particles import non_rel_ptcl as ptcls
+
+from matplotlib import pyplot as plt
 
 __author__ = 'swebb'
 __email__ = 'swebb@radiasoft.net'
@@ -14,9 +17,9 @@ import numpy as np
 
 # Set all simulation parameters at the top for convenience
 
-dimensions = 1
-dt = 1.e-10
-nsteps = 1
+dimensions = 2
+dt = 0.5
+nsteps = 100
 
 # Particle properties
 num_particles = 1000000
@@ -24,13 +27,30 @@ macro_weight = 500000
 num_macro = num_particles/macro_weight
 
 vel_spread = 1. #cm/s
-ball_radius = 0.001 #cm, RMS
 
-macro_size = ball_radius/100.
+simulation_lengths = np.array([2., 1.])
+
+# Define the periodic boundary conditions
+
+class periodic_boundary:
+
+    def __init__(self, lengths):
+
+        self.lengths = np.array(lengths)
+
+
+    def apply_boundary(self, particles):
+
+        particles.pos[:] = particles.pos[:] % self.lengths
+
+
+my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
 n_modes = 100
-delta_k = 0.1/macro_size
+delta_k = 2*np.pi/simulation_lengths
+macro_size = 0.1
+
 
 # The params_dictionary for the electrostatic field + particles
 sim_parameters = {}
@@ -55,7 +75,7 @@ sim_parameters['delta k'] = 1/sim_parameters['particle size']
 # Create the depositer/interpolater, particles, and field solvers
 
 the_depinterp = depinterp.tent_dfes(sim_parameters)
-the_particles = ptcls.non_rel_electrostatic(sim_parameters)
+the_particles = ptcls.non_rel_ptcl(sim_parameters)
 the_fields    = dfe.discrete_fourier_electrostatic(sim_parameters)
 the_depinterp.add_field(the_fields)
 
@@ -69,17 +89,19 @@ the_depinterp.add_field(the_fields)
 #    vel = [vx] #[vx, vy]
 #    the_particles.add_particle(pos, vel)
 
-pos = [0.]
-vel = [0.]
+pos = [0., 0.]
+vel = [0.1, 0.]
 the_particles.add_particle(pos, vel)
-pos = [1.]
-vel = [0.]
+pos = [0.5, 0.]
+vel = [0.2, -0.1]
 the_particles.add_particle(pos, vel)
 
 # Run the simulation
 ptcl_history = []
 KE = []
 t = []
+x = []
+y = []
 the_particles.half_move_back()
 for idx in range(0, nsteps):
     the_particles.move()
@@ -87,7 +109,10 @@ for idx in range(0, nsteps):
     the_particles.accelerate(the_depinterp)
     if idx%10 == 0:
         pos, vel = the_particles.get_particles()
-        #plt.scatter(pos[:,0], pos[:,1])
-        #plt.show()
+        x.append(pos[1, 0])
+        y.append(pos[1, 1])
+
+plt.scatter(x, y)
+plt.show()
 the_particles.half_move_forward()
 

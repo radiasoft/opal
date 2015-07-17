@@ -2,16 +2,14 @@ __author__ = 'swebb'
 
 import numpy as np
 
-from matplotlib import pyplot as plt
-
 class tent_dfes:
 
 
-    def __init__(self, params_dictionary):
+    def __init__(self, pd):
 
         self.type = 'spectral'
-        self.ptcl_size = params_dictionary['particle size']
-
+        self.ptcl_size = pd['particle size']
+        self.charge2mass = pd['charge']/pd['mass']
 
 
     def add_field(self, fields):
@@ -75,7 +73,9 @@ class tent_dfes:
 
         bfield = np.zeros(np.shape(efield))
 
-        return efield, bfield
+        acceleration = self.charge2mass*efield
+
+        return acceleration
 
 
     def deposit_sources(self, pos, vel, charge):
