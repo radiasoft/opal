@@ -19,7 +19,7 @@ import numpy as np
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 0.01
+dt = 1.e-10
 nsteps = 1000
 
 # Particle properties
@@ -48,9 +48,9 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 100
+n_modes = 10
 delta_k = 2*np.pi/simulation_lengths
-macro_size = 0.1
+macro_size = 0.01
 
 
 # The params_dictionary for the electrostatic field + particles
@@ -92,13 +92,17 @@ the_depinterp.add_field(the_fields)
 #    vel = [vx] #[vx, vy]
 #    the_particles.add_particle(pos, vel)
 
+weight = []
+
 pos = [0., 0.]
 vel = [0.1, 0.]
+weight.append(1.)
 the_particles.add_particle(pos, vel)
 pos = [0.5, 0.]
 vel = [0.2, -0.1]
+weight.append(-2.)
 the_particles.add_particle(pos, vel)
-
+weights = np.array(weight)
 # Run the simulation
 ptcl_history = []
 KE = []
@@ -108,18 +112,21 @@ y = []
 the_particles.half_move_back()
 for idx in range(0, nsteps):
     the_particles.move()
-    #the_particles.deposit(the_depinterp)
-    #the_particles.accelerate(the_depinterp)
+    the_depinterp.deposit_sources(the_particles.pos,
+                                  the_particles.vel,
+                                  weights)
+    acceleration = the_depinterp.compute_forces(the_particles.pos,
+                                                the_particles.vel)
+    the_particles.accelerate(the_depinterp)
     if idx%10 == 0:
         pos, vel = the_particles.get_particles()
         x.append(pos[1, 0])
         y.append(pos[1, 1])
+        t.append(idx*dt)
 
     the_boundary.apply_boundary(the_particles)
 
-print x
-
-plt.scatter(x, y)
-plt.show()
 the_particles.half_move_forward()
 
+plt.plot(t, x, t, y)
+plt.show()

@@ -64,10 +64,7 @@ class tent_dfes:
             phase = np.dot(pos[idx], self.k_modes.T)
             fourier = np.exp(1.j*(np.dot(pos[idx], self.k_modes.T)))
             fourier *= coeffs
-            print fourier
             efield[idx] = np.dot(fourier, self.k_modes)
-            print self.k_modes
-            print efield[idx]
 
         efield *= 1.j
 

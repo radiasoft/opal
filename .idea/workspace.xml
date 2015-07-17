@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/opal/boundaries/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/opal/boundaries/particle_boundaries.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" afterPath="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/spectral_electrostatic.py" afterPath="$PROJECT_DIR$/examples/spectral_electrostatic.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -34,7 +30,7 @@
       <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1125">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
               <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
               <folding />
             </state>
@@ -44,8 +40,8 @@
       <file leaf-file-name="particle_boundaries.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/boundaries/particle_boundaries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="390">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -54,7 +50,7 @@
       <file leaf-file-name="non_rel_ptcl.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1005">
+            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1005">
               <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
               <folding />
             </state>
@@ -64,8 +60,8 @@
       <file leaf-file-name="spectral_electrostatic.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/spectral_electrostatic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43080357" vertical-offset="1412" max-vertical-offset="1860">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state vertical-scroll-proportion="3.4215248" vertical-offset="244" max-vertical-offset="2055">
+              <caret line="118" column="66" selection-start-line="118" selection-start-column="66" selection-end-line="118" selection-end-column="66" />
               <folding>
                 <element signature="e#188#249#0" expanded="true" />
               </folding>
@@ -76,8 +72,8 @@
       <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1560">
-              <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+            <state vertical-scroll-proportion="-37.5" vertical-offset="0" max-vertical-offset="1515">
+              <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -100,10 +96,10 @@
         <option value="$PROJECT_DIR$/tests/fields/electrostatic/dfes.py" />
         <option value="$PROJECT_DIR$/tests/interpolaters_depositers/tent_dfes.py" />
         <option value="$PROJECT_DIR$/opal/boundaries/periodic_boundaries.py" />
-        <option value="$PROJECT_DIR$/opal/boundaries/particle_boundaries.py" />
-        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
         <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
         <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
+        <option value="$PROJECT_DIR$/opal/boundaries/particle_boundaries.py" />
+        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
         <option value="$PROJECT_DIR$/examples/spectral_electrostatic.py" />
       </list>
     </option>
@@ -586,28 +582,36 @@
       <created>1436913745523</created>
       <updated>1436913745523</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Building up to first actual simulation of plasma. Testing periodic boundary conditions and deposition now.">
+      <created>1437160919254</created>
+      <updated>1437160919254</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Periodic boundaries work.">
+      <created>1437161285432</created>
+      <updated>1437161285432</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1734" y="-25" width="1440" height="877" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.49964765" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14799154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14799154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5003524" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37450722" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37549406" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -635,7 +639,9 @@
     <MESSAGE value="Test produces the correct Fourier components for rho." />
     <MESSAGE value="Test of computing phi from rho returns correct values. Removing some commented out plot/print diagnostics from the various classes to simplify the test." />
     <MESSAGE value="The depositer computes the correct values for E -- it turns out that these values are just very close to zero due to the pathological combination of particle positions and the limited Fourier modes being used." />
-    <option name="LAST_COMMIT_MESSAGE" value="The depositer computes the correct values for E -- it turns out that these values are just very close to zero due to the pathological combination of particle positions and the limited Fourier modes being used." />
+    <MESSAGE value="Building up to first actual simulation of plasma. Testing periodic boundary conditions and deposition now." />
+    <MESSAGE value="Periodic boundaries work." />
+    <option name="LAST_COMMIT_MESSAGE" value="Periodic boundaries work." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -909,15 +915,7 @@
     <entry file="file://$PROJECT_DIR$/opal/boundaries/particle_boundaries.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="1560">
-          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -930,10 +928,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-37.5" vertical-offset="0" max-vertical-offset="1515">
+          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/spectral_electrostatic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43080357" vertical-offset="1412" max-vertical-offset="1860">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        <state vertical-scroll-proportion="3.4215248" vertical-offset="244" max-vertical-offset="2055">
+          <caret line="118" column="66" selection-start-line="118" selection-start-column="66" selection-end-line="118" selection-end-column="66" />
           <folding>
             <element signature="e#188#249#0" expanded="true" />
           </folding>
