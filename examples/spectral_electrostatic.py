@@ -23,7 +23,7 @@ dt = 1.e-10
 nsteps = 1
 
 # Particle properties
-num_particles = 2
+num_particles = 3
 macro_weight = 1
 num_macro = num_particles/macro_weight
 
@@ -48,7 +48,7 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 100
+n_modes = 1
 delta_k = 2*np.pi/simulation_lengths
 macro_size = 0.01
 
@@ -100,7 +100,11 @@ weight.append(1.)
 the_particles.add_particle(pos, vel)
 pos = [0.5, 0.]
 vel = [0.2, -0.1]
-weight.append(-1.)
+weight.append(1.)
+the_particles.add_particle(pos, vel)
+pos = [0., 0.5]
+vel = [0.2, -0.1]
+weight.append(1.)
 the_particles.add_particle(pos, vel)
 weights = np.array(weight)
 # Run the simulation
@@ -129,5 +133,5 @@ for idx in range(0, nsteps):
 
 the_particles.half_move_forward()
 
-plt.plot(t, x, t, y)
-plt.show()
+#plt.plot(t, x, t, y)
+#plt.show()
