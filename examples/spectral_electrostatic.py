@@ -9,6 +9,11 @@ from opal.particles import non_rel_ptcl as ptcls
 from opal.boundaries import particle_boundaries
 
 from matplotlib import pyplot as plt
+import matplotlib as mpl
+#mpl.rc('font',**{'family':'sans-serif','sans-serif':[
+#  'Helvetica']})
+mpl.rc('font',**{'family':'serif','serif':['Palatino']})
+mpl.rc('text', usetex=True)
 
 __author__ = 'swebb'
 __email__ = 'swebb@radiasoft.net'
@@ -19,11 +24,11 @@ import numpy as np
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 1.e-10
-nsteps = 1
+dt = 1.e-15
+nsteps = 10000
 
 # Particle properties
-num_particles = 3
+num_particles = 2
 macro_weight = 1
 num_macro = num_particles/macro_weight
 
@@ -71,7 +76,7 @@ sim_parameters['particle size'] = np.array([macro_size, macro_size, macro_size])
 
 # Field parameters
 sim_parameters['n_modes'] = [n_modes]*dimensions# 20 modes/dimension
-sim_parameters['delta k'] = 1/sim_parameters['particle size']
+sim_parameters['delta k'] = delta_k
 
 # Create the depositer/interpolater, particles, and field solvers
 
@@ -94,16 +99,16 @@ the_depinterp.add_field(the_fields)
 
 weight = []
 
-pos = [0., 0.]
-vel = [0.1, 0.]
+#pos = [0., 0.]
+#vel = [0.1, 0.]
+#weight.append(1.)
+#the_particles.add_particle(pos, vel)
+pos = [1.5, 0.9]
+vel = [-0.2, 0.]
 weight.append(1.)
 the_particles.add_particle(pos, vel)
-pos = [0.5, 0.]
-vel = [0.2, -0.1]
-weight.append(1.)
-the_particles.add_particle(pos, vel)
-pos = [0., 0.5]
-vel = [0.2, -0.1]
+pos = [0.5, 0.1]
+vel = [0.2, 0.]
 weight.append(1.)
 the_particles.add_particle(pos, vel)
 weights = np.array(weight)
@@ -111,8 +116,10 @@ weights = np.array(weight)
 ptcl_history = []
 KE = []
 t = []
-x = []
-y = []
+x1 = []
+y1 = []
+x2 = []
+y2 = []
 the_particles.half_move_back()
 for idx in range(0, nsteps):
     the_particles.move()
@@ -122,16 +129,42 @@ for idx in range(0, nsteps):
     acceleration = the_depinterp.compute_forces(the_particles.pos,
                                                 the_particles.vel)
     the_particles.accelerate(the_depinterp)
-    if idx%10 == 0:
-        print acceleration
+    if idx%50 == 0:
         pos, vel = the_particles.get_particles()
-        x.append(pos[1, 0])
-        y.append(pos[1, 1])
+        x1.append(pos[1, 0])
+        y1.append(pos[1, 1])
+        x2.append(pos[0, 0])
+        y2.append(pos[0, 1])
         t.append(idx*dt)
 
     the_boundary.apply_boundary(the_particles)
 
 the_particles.half_move_forward()
+#plt.scatter(x, y)
+plt.plot(t, x2, label=r'$x_2$')
+plt.plot(t, x1, label=r'$x_1$')
+plt.xlabel('$t$ [sec]')
+plt.ylabel('$x(t)$ [cm]')
+plt.legend()
+plt.tight_layout()
+plt.savefig('periodix_x.png')
 
-#plt.plot(t, x, t, y)
-#plt.show()
+plt.clf()
+
+plt.plot(t, y2, label=r'$y_2$')
+plt.plot(t, y1, label=r'$y_1$')
+plt.xlabel('$t$ [sec]')
+plt.ylabel('$y(t)$ [cm]')
+plt.legend()
+plt.tight_layout()
+plt.savefig('periodic_y.png')
+
+plt.clf()
+
+plt.scatter(x1, y1, label=r'ptcl 1', c='r')
+plt.scatter(x2, y2, label=r'ptcl 2', c='b')
+plt.xlabel('$x$ [cm]')
+plt.ylabel('$y$ [cm]')
+plt.legend()
+plt.tight_layout()
+plt.savefig('xy_scatter.png')

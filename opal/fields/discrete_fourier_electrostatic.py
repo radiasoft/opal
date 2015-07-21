@@ -32,7 +32,6 @@ class discrete_fourier_electrostatic:
                 linear_stride -= this_idx
                 linear_stride /= self.n_modes[dim_idx]
             self.k_vectors[idx] += kmin
-            #self.k_vectors[idx] *= 2.*np.pi
             self.k_squared[idx] = np.dot(self.k_vectors[idx],
                                          self.k_vectors[idx])
 
