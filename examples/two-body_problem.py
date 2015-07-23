@@ -52,9 +52,9 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 50
+n_modes = 15
 delta_k = 2*np.pi/simulation_lengths
-macro_size = 0.05
+macro_size = 0.015
 
 
 # The params_dictionary for the electrostatic field + particles

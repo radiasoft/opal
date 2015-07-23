@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
+    <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="Fixed bug with the flip by working around the 0-k-vector pole and getting the right periodicity.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" afterPath="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-body_problem.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -27,12 +28,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49209931" vertical-offset="52" max-vertical-offset="1110">
-              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1155">
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding>
+                <element signature="e#23#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,8 +53,8 @@
       <file leaf-file-name="two-body_problem.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="3600">
-              <caret line="110" column="10" selection-start-line="110" selection-start-column="10" selection-end-line="110" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="3600">
+              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
               <folding>
                 <element signature="e#188#249#0" expanded="true" />
               </folding>
@@ -59,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="tent_dfes.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="757" max-vertical-offset="1560">
-              <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.72911966" vertical-offset="307" max-vertical-offset="1605">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,11 +104,11 @@
         <option value="$PROJECT_DIR$/tests/interpolaters_depositers/tent_dfes.py" />
         <option value="$PROJECT_DIR$/opal/boundaries/periodic_boundaries.py" />
         <option value="$PROJECT_DIR$/opal/boundaries/particle_boundaries.py" />
-        <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
         <option value="$PROJECT_DIR$/examples/spectral_electrostatic.py" />
         <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
-        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
+        <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
         <option value="$PROJECT_DIR$/examples/two-body_problem.py" />
+        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       </list>
     </option>
   </component>
@@ -156,6 +159,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fields" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -501,7 +536,11 @@
       <created>1437688095686</created>
       <updated>1437688095686</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Uncovered a bug where the fields are given a sign-flip across boundaries. Wasn't seeing this until I plunked a charge on the boundary and saw the sign flip. Committing to bookmark until I fix it.">
+      <created>1437689099219</created>
+      <updated>1437689099219</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -557,7 +596,8 @@
     <MESSAGE value="There is a bug in the field solve that computes the same field for every particle, which is, of course, wrong." />
     <MESSAGE value="OPAL has made its first simulation -- the two body problem in two dimensions on a torus with the electrostatic spectral algorithm. Can simulate for a very, very long time and everything works out just dandy." />
     <MESSAGE value="Fixed a bug where the species couldn't handle weights with opposite signs (i.e. electron versus positron stored as the same species, but with opposite weights) consistently. It computed the potential correctly, but then the acceleration wasn't satisfying Newton's Second Law because of missed cancellation. Bug is now fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug where the species couldn't handle weights with opposite signs (i.e. electron versus positron stored as the same species, but with opposite weights) consistently. It computed the potential correctly, but then the acceleration wasn't satisfying Newton's Second Law because of missed cancellation. Bug is now fixed." />
+    <MESSAGE value="Uncovered a bug where the fields are given a sign-flip across boundaries. Wasn't seeing this until I plunked a charge on the boundary and saw the sign flip. Committing to bookmark until I fix it." />
+    <option name="LAST_COMMIT_MESSAGE" value="Uncovered a bug where the fields are given a sign-flip across boundaries. Wasn't seeing this until I plunked a charge on the boundary and saw the sign flip. Committing to bookmark until I fix it." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -584,7 +624,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -625,7 +667,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -666,7 +710,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -706,7 +752,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -729,7 +777,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="1125">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -921,10 +971,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1155">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="3600">
-          <caret line="110" column="10" selection-start-line="110" selection-start-column="10" selection-end-line="110" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="3600">
+          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
           <folding>
             <element signature="e#188#249#0" expanded="true" />
           </folding>
@@ -933,16 +993,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="757" max-vertical-offset="1560">
-          <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49209931" vertical-offset="52" max-vertical-offset="1110">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.72911966" vertical-offset="307" max-vertical-offset="1605">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>

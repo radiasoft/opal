@@ -30,11 +30,16 @@ class tent_dfes:
 
         # This shape function is specific for a tent particle with finite
         # transverse size.
-        self.shape_function = 1.
+        self.shape_function = np.ones(np.shape(self.k_modes)[0])
         for dim in range (0, np.shape(self.k_modes)[1]):
-            self.shape_function *= \
-            (2. - 2.*np.cos(self.ptcl_size[dim]*self.k_modes[:,dim]))/ \
-            (self.ptcl_size[dim]*self.k_modes[:,dim])**2
+            for idx in range(0, np.shape(self.k_modes)[0]):
+                form_factor = \
+                    (2.-2.*np.cos(self.ptcl_size[dim]*
+                                  self.k_modes[idx,dim]))/ \
+                    (self.ptcl_size[dim]*self.k_modes[idx,dim])**2
+                if np.isnan(form_factor):
+                    form_factor = 1.
+                self.shape_function[idx] *= form_factor
 
 
     def compute_forces(self, pos, vel, weights):
@@ -68,12 +73,10 @@ class tent_dfes:
 
         efield *= 1.j
 
-        print 'efield =', efield
-
         bfield = np.zeros(np.shape(efield))
 
         # Truncate imaginary part that is lingering after sum due to roundoff
-        acceleration = self.charge2mass*efield.real
+        acceleration = self.charge2mass*weights*(efield.real)
 
         return acceleration
 
