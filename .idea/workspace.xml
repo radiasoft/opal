@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/examples/spectral_electrostatic.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-body_problem.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="opal.iws" />
@@ -26,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="1110">
-              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.49209931" vertical-offset="52" max-vertical-offset="1110">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -39,18 +40,18 @@
       <file leaf-file-name="non_rel_ptcl.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1005">
-              <caret line="34" column="67" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="262" max-vertical-offset="1065">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="two-body_problem.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="two-body_problem.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7285068" vertical-offset="638" max-vertical-offset="3420">
-              <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="3600">
+              <caret line="110" column="10" selection-start-line="110" selection-start-column="10" selection-end-line="110" selection-end-column="10" />
               <folding>
                 <element signature="e#188#249#0" expanded="true" />
               </folding>
@@ -61,10 +62,24 @@
       <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="1500">
-              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="757" max-vertical-offset="1560">
+              <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="periodic_y.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/periodic_y.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="periodic_x.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/periodic_x.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -87,9 +102,9 @@
         <option value="$PROJECT_DIR$/opal/boundaries/periodic_boundaries.py" />
         <option value="$PROJECT_DIR$/opal/boundaries/particle_boundaries.py" />
         <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
-        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
-        <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
         <option value="$PROJECT_DIR$/examples/spectral_electrostatic.py" />
+        <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
+        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
         <option value="$PROJECT_DIR$/examples/two-body_problem.py" />
       </list>
     </option>
@@ -258,6 +273,30 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="Unittests in opal" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="opal" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="$PROJECT_DIR$" />
+      <option name="TEST_TYPE" value="TEST_FOLDER" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -379,18 +418,20 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.dfes" />
       <item index="1" class="java.lang.String" itemvalue="Python.tent_dfes" />
       <item index="2" class="java.lang.String" itemvalue="Python.tent_dfes (1)" />
       <item index="3" class="java.lang.String" itemvalue="Python.spectral_electrostatic" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in opal" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.spectral_electrostatic" />
-        <item index="1" class="java.lang.String" itemvalue="Python.tent_dfes (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.tent_dfes" />
-        <item index="3" class="java.lang.String" itemvalue="Python.dfes" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in opal" />
+        <item index="2" class="java.lang.String" itemvalue="Python.tent_dfes (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.tent_dfes" />
+        <item index="4" class="java.lang.String" itemvalue="Python.dfes" />
       </list>
     </recent_temporary>
   </component>
@@ -456,28 +497,32 @@
       <created>1437513610037</created>
       <updated>1437513610037</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed a bug where the species couldn't handle weights with opposite signs (i.e. electron versus positron stored as the same species, but with opposite weights) consistently. It computed the potential correctly, but then the acceleration wasn't satisfying Newton's Second Law because of missed cancellation. Bug is now fixed.">
+      <created>1437688095686</created>
+      <updated>1437688095686</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1683" y="-45" width="1440" height="873" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.49964765" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14799154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14799154" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5003524" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37748346" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37615895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -511,7 +556,8 @@
     <MESSAGE value="Acceleration does not. Removing unnecessary print statements." />
     <MESSAGE value="There is a bug in the field solve that computes the same field for every particle, which is, of course, wrong." />
     <MESSAGE value="OPAL has made its first simulation -- the two body problem in two dimensions on a torus with the electrostatic spectral algorithm. Can simulate for a very, very long time and everything works out just dandy." />
-    <option name="LAST_COMMIT_MESSAGE" value="OPAL has made its first simulation -- the two body problem in two dimensions on a torus with the electrostatic spectral algorithm. Can simulate for a very, very long time and everything works out just dandy." />
+    <MESSAGE value="Fixed a bug where the species couldn't handle weights with opposite signs (i.e. electron versus positron stored as the same species, but with opposite weights) consistently. It computed the potential correctly, but then the acceleration wasn't satisfying Newton's Second Law because of missed cancellation. Bug is now fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug where the species couldn't handle weights with opposite signs (i.e. electron versus positron stored as the same species, but with opposite weights) consistently. It computed the potential correctly, but then the acceleration wasn't satisfying Newton's Second Law because of missed cancellation. Bug is now fixed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -526,16 +572,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2685" max-vertical-offset="2895">
-          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
-          <folding>
-            <element signature="e#188#249#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="1500">
@@ -845,25 +881,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1080" max-vertical-offset="1500">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/kinetic_energy.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/periodic_y.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/periodic_x.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -873,37 +891,59 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1005">
-          <caret line="34" column="67" selection-start-line="34" selection-start-column="67" selection-end-line="34" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/matplotlib/image.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33484164" vertical-offset="6122" max-vertical-offset="21585">
           <caret line="433" column="0" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
+    <entry file="file://$PROJECT_DIR$/examples/xy_scatter.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/periodic_x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/periodic_y.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="1110">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="393" max-vertical-offset="1065">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7285068" vertical-offset="638" max-vertical-offset="3420">
-          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1297" max-vertical-offset="3600">
+          <caret line="110" column="10" selection-start-line="110" selection-start-column="10" selection-end-line="110" selection-end-column="10" />
           <folding>
             <element signature="e#188#249#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="757" max-vertical-offset="1560">
+          <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49209931" vertical-offset="52" max-vertical-offset="1110">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

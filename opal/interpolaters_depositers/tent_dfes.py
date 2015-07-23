@@ -68,6 +68,8 @@ class tent_dfes:
 
         efield *= 1.j
 
+        print 'efield =', efield
+
         bfield = np.zeros(np.shape(efield))
 
         # Truncate imaginary part that is lingering after sum due to roundoff

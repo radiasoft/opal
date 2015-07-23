@@ -24,8 +24,9 @@ import numpy as np
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 1.e-15
-nsteps = 1
+dt = 1.e-16
+nsteps = 1#0**4
+plot_potential = True
 
 # Particle properties
 num_particles = 2
@@ -51,7 +52,7 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 15
+n_modes = 50
 delta_k = 2*np.pi/simulation_lengths
 macro_size = 0.05
 
@@ -101,11 +102,11 @@ weight = []
 #vel = [0.1, 0.]
 #weight.append(1.)
 #the_particles.add_particle(pos, vel)
-pos = [1.1, 0.6]
+pos = [0.5, 0.]
 vel = [0., 0.]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
-pos = [0.9, 0.4]
+pos = [1.5, 0.]
 vel = [0., 0.]
 weight = -1.
 the_particles.add_particle(pos, vel, weight)
@@ -122,8 +123,8 @@ vx2 = []
 vy1 = []
 vy2 = []
 the_particles.half_move_back()
-x = np.arange(0., simulation_lengths[0], 0.01)
-y = np.arange(0., simulation_lengths[1], 0.01)
+x = np.arange(0., simulation_lengths[0], 0.1)
+y = np.arange(0., simulation_lengths[1], 0.1)
 
 XX, YY = np.meshgrid(x, y)
 for idx in range(0, nsteps):
@@ -132,28 +133,31 @@ for idx in range(0, nsteps):
                                   the_particles.vel,
                                   the_particles.weights)
     the_particles.accelerate(the_depinterp)
-    phi = the_fields.get_fields()
-    kvecs = the_fields.get_kvectors()
-    potential = 0.
-    for idx in range(0, np.shape(kvecs)[0]):
-        potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0] + YY*kvecs[idx,1]))
 
-    plt.imshow(potential.real,
-               extent=[0., 2., 0., 1.],
-               origin='lower',
-               cmap=mpl.cm.bone_r)
-    plt.colorbar()
-    plt.show()
+    if plot_potential:
+        phi = the_fields.get_fields()
+        kvecs = the_fields.get_kvectors()
+        potential = 0.
+        for idx in range(0, np.shape(kvecs)[0]):
+            potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0] + YY*kvecs[idx,1]))
 
-    plt.clf()
+        plt.imshow(potential.real,
+                   extent=[0., simulation_lengths[0],
+                           0., simulation_lengths[1]],
+                   origin='lower',
+                   cmap=mpl.cm.bone_r)
+        plt.colorbar()
+        plt.show()
 
-    plt.imshow(potential.imag,
-               extent=[0., 2., 0., 1.],
-               origin='lower',
-               cmap=mpl.cm.bone_r)
+        plt.clf()
 
-    plt.colorbar()
-    plt.show()
+        plt.imshow(potential.imag,
+                   extent=[0., 2., 0., 1.],
+                   origin='lower',
+                   cmap=mpl.cm.bone_r)
+
+        plt.colorbar()
+        plt.show()
 
     if idx%100 == 0:
         pos, vel = the_particles.get_particles()
@@ -171,23 +175,23 @@ for idx in range(0, nsteps):
 
 the_particles.half_move_forward()
 
-#plt.plot(t, x2, label=r'$x_2$')
-#plt.plot(t, x1, label=r'$x_1$')
-#plt.xlabel('$t$ [sec]')
-#plt.ylabel('$x(t)$ [cm]')
-#plt.legend()
-#plt.tight_layout()
-#plt.savefig('periodic_x.png')
+plt.plot(t, x2, label=r'$x_2$')
+plt.plot(t, x1, label=r'$x_1$')
+plt.xlabel('$t$ [sec]')
+plt.ylabel('$x(t)$ [cm]')
+plt.legend()
+plt.tight_layout()
+plt.savefig('periodic_x.png')
 
-#plt.clf()
+plt.clf()
 
-#plt.plot(t, y2, label=r'$y_2$')
-#plt.plot(t, y1, label=r'$y_1$')
-#plt.xlabel('$t$ [sec]')
-#plt.ylabel('$y(t)$ [cm]')
-#plt.legend()
-#plt.tight_layout()
-#plt.savefig('periodic_y.png')
+plt.plot(t, y2, label=r'$y_2$')
+plt.plot(t, y1, label=r'$y_1$')
+plt.xlabel('$t$ [sec]')
+plt.ylabel('$y(t)$ [cm]')
+plt.legend()
+plt.tight_layout()
+plt.savefig('periodic_y.png')
 
 plt.clf()
 
