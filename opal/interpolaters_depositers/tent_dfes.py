@@ -37,7 +37,7 @@ class tent_dfes:
             (self.ptcl_size[dim]*self.k_modes[:,dim])**2
 
 
-    def compute_forces(self, pos, vel):
+    def compute_forces(self, pos, vel, weights):
         """ Calculates the forces for each particle based on the fields.
         For the discrete Fourier electrostatic class, this is a simple
         electric field acceleration that includes no magnetic rotation.
@@ -64,12 +64,14 @@ class tent_dfes:
             fourier = np.exp(1.j*(np.dot(pos[idx], self.k_modes.T)))
             fourier *= coeffs
             efield[idx] = np.dot(fourier, self.k_modes)
+            efield[idx] *= weights[idx]
 
         efield *= 1.j
 
         bfield = np.zeros(np.shape(efield))
 
-        acceleration = self.charge2mass*efield
+        # Truncate imaginary part that is lingering after sum due to roundoff
+        acceleration = self.charge2mass*efield.real
 
         return acceleration
 

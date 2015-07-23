@@ -51,9 +51,9 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 50
+n_modes = 15
 delta_k = 2*np.pi/simulation_lengths
-macro_size = 0.01
+macro_size = 0.05
 
 
 # The params_dictionary for the electrostatic field + particles
@@ -103,13 +103,12 @@ weight = []
 #the_particles.add_particle(pos, vel)
 pos = [1.1, 0.6]
 vel = [0., 0.]
-weight.append(1.)
-the_particles.add_particle(pos, vel)
+weight = 1.
+the_particles.add_particle(pos, vel, weight)
 pos = [0.9, 0.4]
 vel = [0., 0.]
-weight.append(1.)
-the_particles.add_particle(pos, vel)
-weights = np.array(weight)
+weight = -1.
+the_particles.add_particle(pos, vel, weight)
 # Run the simulation
 ptcl_history = []
 KE = []
@@ -131,9 +130,7 @@ for idx in range(0, nsteps):
     the_particles.move()
     the_depinterp.deposit_sources(the_particles.pos,
                                   the_particles.vel,
-                                  weights)
-    acceleration = the_depinterp.compute_forces(the_particles.pos,
-                                                the_particles.vel)
+                                  the_particles.weights)
     the_particles.accelerate(the_depinterp)
     phi = the_fields.get_fields()
     kvecs = the_fields.get_kvectors()
@@ -145,6 +142,17 @@ for idx in range(0, nsteps):
                extent=[0., 2., 0., 1.],
                origin='lower',
                cmap=mpl.cm.bone_r)
+    plt.colorbar()
+    plt.show()
+
+    plt.clf()
+
+    plt.imshow(potential.imag,
+               extent=[0., 2., 0., 1.],
+               origin='lower',
+               cmap=mpl.cm.bone_r)
+
+    plt.colorbar()
     plt.show()
 
     if idx%100 == 0:

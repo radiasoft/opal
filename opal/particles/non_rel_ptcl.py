@@ -11,6 +11,7 @@ class non_rel_ptcl:
         self.dimension = pd['dimensions']
         self.pos = np.zeros((self.num_ptcls, self.dimension))
         self.vel = np.zeros((self.num_ptcls, self.dimension))
+        self.weights = np.zeros(self.num_ptcls)
         self.exists = [False]*self.num_ptcls
         self.dt = pd['dt']
 
@@ -32,7 +33,8 @@ class non_rel_ptcl:
 
     def accelerate(self, depinterp):
 
-        acceleration = depinterp.compute_forces(self.pos, self.vel)
+        acceleration = depinterp.compute_forces(self.pos, self.vel,
+                                                self.weights)
         self.vel += self.dt * acceleration
 
 
@@ -41,13 +43,14 @@ class non_rel_ptcl:
         return self.pos, self.vel
 
 
-    def add_particle(self, position, velocity):
+    def add_particle(self, position, velocity, weight):
 
         added_ptcl = False
         for idx in range(0, self.num_ptcls):
             if not self.exists[idx]:
                 self.pos[idx,:] = position[:]
                 self.vel[idx,:] = velocity[:]
+                self.weights[idx] = weight
                 self.exists[idx] = True
                 added_ptcl = True
                 break
@@ -57,6 +60,7 @@ class non_rel_ptcl:
             np.append(np.zeros(self.dimension), self.vel)
             self.pos[-1,:] = position[:]
             self.vel[-1,:] = velocity[:]
+            self.weights[idx] = weight
             self.exists.append(True)
 
             added_ptcl = True
