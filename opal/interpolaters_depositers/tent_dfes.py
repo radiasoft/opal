@@ -10,6 +10,7 @@ class tent_dfes:
         self.type = 'spectral'
         self.ptcl_size = pd['particle size']
         self.charge2mass = pd['charge']/pd['mass']
+        self.charge = pd['charge']
 
 
     def add_field(self, fields):
@@ -81,7 +82,7 @@ class tent_dfes:
         return acceleration
 
 
-    def deposit_sources(self, pos, vel, charge):
+    def deposit_sources(self, pos, vel, weight):
         """ Calculates the source terms required for the fields and passes
         them off to the fields. Because this class is electrostatic, it only
         computes the charge density.
@@ -95,7 +96,7 @@ class tent_dfes:
 
         fourier = np.exp(1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
-        rho = np.dot(charge, fourier)
+        rho = self.charge*np.dot(weight, fourier)
 
         self.fields.compute_fields(rho)
 

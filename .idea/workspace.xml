@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="Fixed bug with the flip by working around the 0-k-vector pole and getting the right periodicity.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/auxiliary/constants.py" afterPath="$PROJECT_DIR$/opal/auxiliary/constants.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-body_problem.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
+    <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="opal.iws" />
@@ -30,38 +29,18 @@
       <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1155">
+            <state vertical-scroll-proportion="0.0" vertical-offset="292" max-vertical-offset="1140">
               <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="non_rel_ptcl.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1065">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="two-body_problem.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="two-body_problem.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3540">
-              <caret line="143" column="48" selection-start-line="143" selection-start-column="48" selection-end-line="143" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constants.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/opal/auxiliary/constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23595506" vertical-offset="0" max-vertical-offset="445">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state vertical-scroll-proportion="-0.37246048" vertical-offset="1605" max-vertical-offset="3540">
+              <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -70,8 +49,8 @@
       <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="876" max-vertical-offset="1605">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1177" max-vertical-offset="1620">
+              <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -98,9 +77,9 @@
         <option value="$PROJECT_DIR$/examples/spectral_electrostatic.py" />
         <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
         <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
-        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
-        <option value="$PROJECT_DIR$/examples/two-body_problem.py" />
         <option value="$PROJECT_DIR$/opal/auxiliary/constants.py" />
+        <option value="$PROJECT_DIR$/examples/two-body_problem.py" />
+        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       </list>
     </option>
   </component>
@@ -550,13 +529,18 @@
       <created>1437689099219</created>
       <updated>1437689099219</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Bug in the constants, electron mass was entered six orders of magnitude too large.">
+      <created>1437774896181</created>
+      <updated>1437774896181</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1683" y="-45" width="1440" height="873" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.49964765" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -565,13 +549,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5003524" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37516513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37615895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -607,7 +590,8 @@
     <MESSAGE value="OPAL has made its first simulation -- the two body problem in two dimensions on a torus with the electrostatic spectral algorithm. Can simulate for a very, very long time and everything works out just dandy." />
     <MESSAGE value="Fixed a bug where the species couldn't handle weights with opposite signs (i.e. electron versus positron stored as the same species, but with opposite weights) consistently. It computed the potential correctly, but then the acceleration wasn't satisfying Newton's Second Law because of missed cancellation. Bug is now fixed." />
     <MESSAGE value="Uncovered a bug where the fields are given a sign-flip across boundaries. Wasn't seeing this until I plunked a charge on the boundary and saw the sign flip. Committing to bookmark until I fix it." />
-    <option name="LAST_COMMIT_MESSAGE" value="Uncovered a bug where the fields are given a sign-flip across boundaries. Wasn't seeing this until I plunked a charge on the boundary and saw the sign flip. Committing to bookmark until I fix it." />
+    <MESSAGE value="Bug in the constants, electron mass was entered six orders of magnitude too large." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug in the constants, electron mass was entered six orders of magnitude too large." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -964,9 +948,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/opal/auxiliary/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23702031" vertical-offset="0" max-vertical-offset="443">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="393" max-vertical-offset="1065">
+        <state vertical-scroll-proportion="1.2189616" vertical-offset="0" max-vertical-offset="1065">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
@@ -982,24 +974,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="876" max-vertical-offset="1605">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1177" max-vertical-offset="1620">
+          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="3540">
-          <caret line="143" column="48" selection-start-line="143" selection-start-column="48" selection-end-line="143" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/auxiliary/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23595506" vertical-offset="0" max-vertical-offset="445">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        <state vertical-scroll-proportion="-0.37246048" vertical-offset="1605" max-vertical-offset="3540">
+          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
           <folding />
         </state>
       </provider>
