@@ -29,7 +29,7 @@ nsteps = 1#0**4
 plot_potential = True
 
 # Particle properties
-num_particles = 2
+num_particles = 1
 macro_weight = 1
 num_macro = num_particles/macro_weight
 
@@ -106,10 +106,10 @@ pos = [0.5, 0.]
 vel = [0., 0.]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
-pos = [1.5, 0.]
-vel = [0., 0.]
-weight = -1.
-the_particles.add_particle(pos, vel, weight)
+#pos = [1.5, 0.]
+#vel = [0., 0.]
+#weight = -1.
+#the_particles.add_particle(pos, vel, weight)
 # Run the simulation
 ptcl_history = []
 KE = []
@@ -140,6 +140,8 @@ for idx in range(0, nsteps):
         potential = 0.
         for idx in range(0, np.shape(kvecs)[0]):
             potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0] + YY*kvecs[idx,1]))
+
+        potential *= constants.elementary_charge
 
         plt.imshow(potential.real,
                    extent=[0., simulation_lengths[0],
