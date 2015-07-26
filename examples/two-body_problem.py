@@ -30,11 +30,11 @@ plot_potential = True
 plot_diagnostics = False
 
 # Particle properties
-num_particles = 1
+num_particles = 2
 macro_weight = 1
 num_macro = num_particles/macro_weight
 
-simulation_lengths = np.array([20., 10.])
+simulation_lengths = np.array([6., 5.])
 
 # Define the periodic boundary conditions
 
@@ -53,9 +53,9 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 125
+n_modes = 100
 delta_k = 2*np.pi/simulation_lengths
-macro_size = 0.15
+macro_size = 0.015
 
 
 # The params_dictionary for the electrostatic field + particles
@@ -103,11 +103,11 @@ weight = []
 #vel = [0.1, 0.]
 #weight.append(1.)
 #the_particles.add_particle(pos, vel)
-#pos = [10.5, 5.]
-#vel = [0., 1.e3]
-#weight = 1.
-#the_particles.add_particle(pos, vel, weight)
-pos = [11.5, 5.]
+pos = [4.1, 3.]
+vel = [0., 1.e3]
+weight = 1.
+the_particles.add_particle(pos, vel, weight)
+pos = [3.1, 3.]
 vel = [0., -1.e3]
 weight = -1.
 the_particles.add_particle(pos, vel, weight)
@@ -133,6 +133,13 @@ for idx in range(0, nsteps):
     the_depinterp.deposit_sources(the_particles.pos,
                                   the_particles.vel,
                                   the_particles.weights)
+
+    acceleration = the_depinterp.compute_forces(the_particles.pos,
+                                                the_particles.vel,
+                                                the_particles.weights)
+
+    print 'a =', acceleration, 'cm/sec^2'
+
     the_particles.accelerate(the_depinterp)
 
     if plot_potential:
@@ -140,16 +147,27 @@ for idx in range(0, nsteps):
         kvecs = the_fields.get_kvectors()
         potential = 0.
         # compute the test charge force at 1 cm away from the point charge.
-        efieldat1 = np.zeros(2, dtype='complex')
+        phiat1 = np.zeros(2, dtype='complex')
         for idx in range(0, np.shape(kvecs)[0]):
-            potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0] + YY*kvecs[idx,1]))
-            efieldat1 += 1.j*phi[idx]*kvecs[idx]*\
-                      np.exp(1.j*(12.5*kvecs[idx,0]+5.*kvecs[idx,1]))
+            potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0]+YY*kvecs[idx,1]))
+            phiat1 += phi[idx]*\
+                      np.exp(1.j*((pos[0]-1.)*kvecs[idx,0]+
+                                  pos[1]*kvecs[idx,1]))
 
-        efieldat1 *= constants.elementary_charge
-        print 'F at 1 cm =', efieldat1, 'dynes'
+        phiat1 *= constants.elementary_charge
+        print 'phi at 1 cm =', phiat1, 'ergs'
 
         potential *= constants.elementary_charge
+
+        #plt.contour(XX, YY, potential.real)
+
+        phiAnalytic = constants.elementary_charge**2/\
+                      (np.sqrt((XX-pos[0])**2 + (YY-pos[1])**2))
+
+        plt.contour(XX, YY, phiAnalytic)
+        plt.colorbar()
+
+        #plt.contourf(XX, YY, potential.real, cmap=mpl.cm.bone_r)
 
         plt.imshow(potential.real,
                    extent=[0., simulation_lengths[0],
@@ -160,14 +178,6 @@ for idx in range(0, nsteps):
         plt.show()
 
         plt.clf()
-
-        plt.imshow(potential.imag,
-                   extent=[0., 2., 0., 1.],
-                   origin='lower',
-                   cmap=mpl.cm.bone_r)
-
-        plt.colorbar()
-        plt.show()
 
     if idx%100 == 0:
         pos, vel = the_particles.get_particles()

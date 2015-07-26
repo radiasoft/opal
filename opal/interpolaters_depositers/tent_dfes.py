@@ -43,9 +43,6 @@ class tent_dfes:
                     form_factor = 1.
                 self.shape_function[idx] *= form_factor
 
-        plt.scatter(self.shape_function, self.k_modes[:,0])
-        plt.show()
-
 
     def compute_forces(self, pos, vel, weights):
         """ Calculates the forces for each particle based on the fields.
@@ -98,7 +95,7 @@ class tent_dfes:
             electrostatic systems.
         """
 
-        fourier = np.exp(1.j*np.dot(pos, self.k_modes.T))
+        fourier = np.exp(-1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
         rho = self.charge*np.dot(weight, fourier)
 
