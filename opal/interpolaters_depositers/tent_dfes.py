@@ -1,6 +1,7 @@
 __author__ = 'swebb'
 
 import numpy as np
+from matplotlib import pyplot as plt
 
 class tent_dfes:
 
@@ -42,6 +43,9 @@ class tent_dfes:
                     form_factor = 1.
                 self.shape_function[idx] *= form_factor
 
+        plt.scatter(self.shape_function, self.k_modes[:,0])
+        plt.show()
+
 
     def compute_forces(self, pos, vel, weights):
         """ Calculates the forces for each particle based on the fields.
@@ -72,7 +76,7 @@ class tent_dfes:
             efield[idx] = np.dot(fourier, self.k_modes)
             efield[idx] *= weights[idx]
 
-        efield *= 1.j
+        efield *= -1.j
 
         bfield = np.zeros(np.shape(efield))
 

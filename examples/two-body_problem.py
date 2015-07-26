@@ -24,16 +24,17 @@ import numpy as np
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 1.e-16
-nsteps = 1#0**4
+dt = 1.e-10
+nsteps = 1#2*10**4
 plot_potential = True
+plot_diagnostics = False
 
 # Particle properties
 num_particles = 1
 macro_weight = 1
 num_macro = num_particles/macro_weight
 
-simulation_lengths = np.array([2., 1.])
+simulation_lengths = np.array([20., 10.])
 
 # Define the periodic boundary conditions
 
@@ -52,9 +53,9 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 15
+n_modes = 125
 delta_k = 2*np.pi/simulation_lengths
-macro_size = 0.015
+macro_size = 0.15
 
 
 # The params_dictionary for the electrostatic field + particles
@@ -102,14 +103,14 @@ weight = []
 #vel = [0.1, 0.]
 #weight.append(1.)
 #the_particles.add_particle(pos, vel)
-pos = [0.5, 0.]
-vel = [0., 0.]
-weight = 1.
-the_particles.add_particle(pos, vel, weight)
-#pos = [1.5, 0.]
-#vel = [0., 0.]
-#weight = -1.
+#pos = [10.5, 5.]
+#vel = [0., 1.e3]
+#weight = 1.
 #the_particles.add_particle(pos, vel, weight)
+pos = [11.5, 5.]
+vel = [0., -1.e3]
+weight = -1.
+the_particles.add_particle(pos, vel, weight)
 # Run the simulation
 ptcl_history = []
 KE = []
@@ -138,8 +139,15 @@ for idx in range(0, nsteps):
         phi = the_fields.get_fields()
         kvecs = the_fields.get_kvectors()
         potential = 0.
+        # compute the test charge force at 1 cm away from the point charge.
+        efieldat1 = np.zeros(2, dtype='complex')
         for idx in range(0, np.shape(kvecs)[0]):
             potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0] + YY*kvecs[idx,1]))
+            efieldat1 += 1.j*phi[idx]*kvecs[idx]*\
+                      np.exp(1.j*(12.5*kvecs[idx,0]+5.*kvecs[idx,1]))
+
+        efieldat1 *= constants.elementary_charge
+        print 'F at 1 cm =', efieldat1, 'dynes'
 
         potential *= constants.elementary_charge
 
@@ -177,61 +185,41 @@ for idx in range(0, nsteps):
 
 the_particles.half_move_forward()
 
-plt.plot(t, x2, label=r'$x_2$')
-plt.plot(t, x1, label=r'$x_1$')
-plt.xlabel('$t$ [sec]')
-plt.ylabel('$x(t)$ [cm]')
-plt.legend()
-plt.tight_layout()
-plt.savefig('periodic_x.png')
+if plot_diagnostics:
+    plt.plot(t, x2, label=r'$x_2$')
+    plt.plot(t, x1, label=r'$x_1$')
+    plt.xlabel('$t$ [sec]')
+    plt.ylabel('$x(t)$ [cm]')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('periodic_x.png')
 
-plt.clf()
+    plt.clf()
 
-plt.plot(t, y2, label=r'$y_2$')
-plt.plot(t, y1, label=r'$y_1$')
-plt.xlabel('$t$ [sec]')
-plt.ylabel('$y(t)$ [cm]')
-plt.legend()
-plt.tight_layout()
-plt.savefig('periodic_y.png')
+    plt.plot(t, y2, label=r'$y_2$')
+    plt.plot(t, y1, label=r'$y_1$')
+    plt.xlabel('$t$ [sec]')
+    plt.ylabel('$y(t)$ [cm]')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('periodic_y.png')
 
-plt.clf()
+    plt.clf()
 
-#plt.scatter(x1, y1, label=r'ptcl 1', c='r')
-#plt.scatter(x2, y2, label=r'ptcl 2', c='b', alpha=0.5)
-#plt.xlabel('$x$ [cm]')
-#plt.ylabel('$y$ [cm]')
-#plt.legend()
-#plt.tight_layout()
-#plt.savefig('xy_scatter.png')
+    plt.scatter(x1, y1, label=r'ptcl 1', c='r')
+    plt.scatter(x2, y2, label=r'ptcl 2', c='b', alpha=0.5)
+    plt.xlabel('$x$ [cm]')
+    plt.ylabel('$y$ [cm]')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('xy_scatter.png')
 
-#plt.clf()
+    plt.clf()
 
-#plt.scatter(vx1, vy1, label=r'ptcl 1', c='r')
-#plt.scatter(vx2, vy2, label=r'ptcl 2', c='b', alpha=0.5)
-#plt.xlabel('$v_x$ [cm/sec]')
-#plt.ylabel('$v_y$ [cm/sec]')
-#plt.legend()
-#plt.tight_layout()
-#plt.savefig('vxy_scatter.png')
-
-vx1 = np.array(vx1)
-vx2 = np.array(vx2)
-vy1 = np.array(vy1)
-vy2 = np.array(vy2)
-x1 = np.array(x1)
-x2 = np.array(x2)
-y1 = np.array(y1)
-y2 = np.array(y2)
-
-kineticEnergy = 0.5*(vx1**2 + vx2**2 + vy1**2 + vy2**2)
-radius = np.sqrt((x1 - x2)**2 + (y1 - y2)**2)
-potentialEnergy = constants.elementary_charge**2/radius
-kineticEnergy *= constants.electron_mass
-
-energy = kineticEnergy+potentialEnergy
-
-#plt.plot(t, energy)
-#plt.xlabel('$t$ [sec]')
-#plt.ylabel(r'$E$ [ergs]')
-#plt.savefig('energy.png')
+    plt.scatter(vx1, vy1, label=r'ptcl 1', c='r')
+    plt.scatter(vx2, vy2, label=r'ptcl 2', c='b', alpha=0.5)
+    plt.xlabel('$v_x$ [cm/sec]')
+    plt.ylabel('$v_y$ [cm/sec]')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('vxy_scatter.png')
