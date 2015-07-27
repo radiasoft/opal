@@ -12,6 +12,7 @@ class tent_dfes:
         self.ptcl_size = pd['particle size']
         self.charge2mass = pd['charge']/pd['mass']
         self.charge = pd['charge']
+        self.fourier_factor = (2.*np.pi)**pd['dimensions']
 
 
     def add_field(self, fields):
@@ -73,12 +74,12 @@ class tent_dfes:
             efield[idx] = np.dot(fourier, self.k_modes)
             efield[idx] *= weights[idx]
 
-        efield *= -1.j
+        efield *= -1.j/self.fourier_factor
 
         bfield = np.zeros(np.shape(efield))
 
         # Truncate imaginary part that is lingering after sum due to roundoff
-        acceleration = self.charge2mass*weights*(efield.real)
+        acceleration = self.charge2mass*(efield.real)
 
         return acceleration
 

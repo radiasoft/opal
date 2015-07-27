@@ -49,7 +49,7 @@ class discrete_fourier_electrostatic:
             the k-vectors
         """
 
-        self.phi = rho/self.k_squared
+        self.phi = 4.*np.pi*rho/self.k_squared
 
         return self.phi
 

@@ -34,7 +34,7 @@ num_particles = 2
 macro_weight = 1
 num_macro = num_particles/macro_weight
 
-simulation_lengths = np.array([6., 5.])
+simulation_lengths = np.array([20., 20.])
 
 # Define the periodic boundary conditions
 
@@ -53,9 +53,9 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 100
+n_modes = 200
 delta_k = 2*np.pi/simulation_lengths
-macro_size = 0.015
+macro_size = 0.15
 
 
 # The params_dictionary for the electrostatic field + particles
@@ -103,11 +103,11 @@ weight = []
 #vel = [0.1, 0.]
 #weight.append(1.)
 #the_particles.add_particle(pos, vel)
-pos = [4.1, 3.]
+pos = [8.1, 10.]
 vel = [0., 1.e3]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
-pos = [3.1, 3.]
+pos = [12.1, 10.]
 vel = [0., -1.e3]
 weight = -1.
 the_particles.add_particle(pos, vel, weight)
