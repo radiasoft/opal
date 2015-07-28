@@ -26,7 +26,7 @@ import numpy as np
 dimensions = 2
 dt = 1.e-10
 nsteps = 1#2*10**4
-plot_potential = True
+plot_potential = False
 plot_diagnostics = False
 
 # Particle properties
@@ -53,7 +53,7 @@ class periodic_boundary:
 my_boundary = periodic_boundary(simulation_lengths)
 
 # Field properties
-n_modes = 200
+n_modes = 150
 delta_k = 2*np.pi/simulation_lengths
 macro_size = 0.15
 
@@ -103,11 +103,11 @@ weight = []
 #vel = [0.1, 0.]
 #weight.append(1.)
 #the_particles.add_particle(pos, vel)
-pos = [8.1, 10.]
+pos = [0.5*(simulation_lengths[0]-1.), 0.5*simulation_lengths[1]+0.1]
 vel = [0., 1.e3]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
-pos = [12.1, 10.]
+pos = [0.5*(simulation_lengths[0]+1.), 0.5*simulation_lengths[1]+0.1]
 vel = [0., -1.e3]
 weight = -1.
 the_particles.add_particle(pos, vel, weight)

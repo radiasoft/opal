@@ -98,7 +98,7 @@ class tent_dfes:
 
         fourier = np.exp(-1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
-        rho = self.charge*np.dot(weight, fourier)
+        rho = self.charge*np.dot(weight, fourier)/self.fourier_factor
 
         self.fields.compute_fields(rho)
 
