@@ -14,40 +14,59 @@ import random
 
 import numpy as np
 
+from matplotlib import pyplot as plt
+import matplotlib as mpl
+mpl.rc('font',**{'family':'serif','serif':['Palatino'], 'size':16})
+mpl.rc('text', usetex=True)
+
 dimensions = 2
 
-plasma_density = 1.e13 # 10^13 ptcls/cm^2
-beam_density = 2.e13
+plasma_density = 1.e16 # 10^13 ptcls/cm^2
+beam_density = 10.e16
 
 beam_vel = 1.e5 # cm/sec
-plasma_temp = 1.e3 # (cm/sec)^2
+plasma_temp = 1.e20 # (cm/sec)^2
 
 plasma_frequency = np.sqrt(4.*np.pi*plasma_density*
                            constants.elementary_charge/constants.electron_mass)
 omega_p_res = 10 # Steps per plasma frequency
-debye_length = plasma_temp/plasma_frequency
+debye_length = np.sqrt(4.*np.pi*plasma_density*constants.elementary_charge**2/
+                       (0.5*constants.electron_mass*plasma_temp))
+
+print 'lambda_d =', debye_length
+
+n_plasma_periods = 20
+n_steps = n_plasma_periods*omega_p_res
 
 beam_width = 2.*debye_length
 
 dt = 1./(omega_p_res*plasma_frequency)
 
-domain_lengths = np.array([20.*debye_length, 10.*debye_length])
+domain_lengths = np.array([10.*debye_length, 5.*debye_length])
+
 ptcls_per_debye = 10
 ptcl_width = np.array([debye_length/ptcls_per_debye,
                        debye_length/ptcls_per_debye])
 
 num_ptcls_plasma = np.product(domain_lengths)*plasma_density
+print 'plasma ptcls =', num_ptcls_plasma
 num_macro_plasma = int((np.product(
                         domain_lengths)/debye_length**2)*ptcls_per_debye)
+print 'num macro plasma =', num_macro_plasma
 # Use one macro_weight for simplicity
 macro_weight = num_ptcls_plasma/num_macro_plasma
+
 num_ptcls_beam = domain_lengths[0]*beam_width*beam_density
 num_macro_beam = int(num_ptcls_beam/macro_weight)
 
 delta_k = 2.*np.pi/domain_lengths
-n_modes = np.round(domain_lengths/ptcl_width)
+modes = np.round(domain_lengths/ptcl_width)
+n_modes = np.zeros(np.shape(modes), dtype='int')
 for idx in range(np.shape(n_modes)[0]):
-    n_modes[idx] = int(n_modes[idx])
+    n_modes[idx] = int(modes[idx])
+
+plot_potential = True
+dump_period = omega_p_res/4
 
 ####
 #
@@ -83,7 +102,7 @@ sim_parameters['macro weight'] = macro_weight
 sim_parameters['particle size'] = ptcl_width
 
 # Field parameters
-sim_parameters['n_modes'] = [n_modes]*dimensions# 20 modes/dimension
+sim_parameters['n_modes'] = n_modes
 sim_parameters['delta k'] = delta_k
 
 # Create the depositer/interpolater, particles, and field solvers
@@ -110,3 +129,52 @@ for idx in range(0, num_macro_beam):
                     random.gauss(0., plasma_temp)])
     the_particles.add_particle(pos, vel, macro_weight)
 
+####
+#
+# Run the simulation loop
+#
+####
+
+x = np.arange(0., domain_lengths[0], 0.1*debye_length)
+y = np.arange(0., domain_lengths[1], 0.1*debye_length)
+
+XX, YY = np.meshgrid(x, y)
+
+the_particles.half_move_back()
+
+for step in range(0, n_steps):
+    print 'Running time step', step
+    the_particles.move()
+
+    the_depinterp.deposit_sources(the_particles.pos,
+                                  the_particles.vel,
+                                  the_particles.weights)
+
+    if step%dump_period == 0:
+
+        print 'Generating plot'
+
+        if plot_potential:
+            #phi = the_fields.get_fields()
+            rhotilde = the_depinterp.get_rho()
+            kvecs = the_fields.get_kvectors()
+            rho = 0.
+            # compute the test charge force at 1 cm away from the point charge.
+            for idx in range(0, np.shape(kvecs)[0]):
+                rho += \
+                    rhotilde[idx]*np.exp(1.j*(XX*kvecs[idx,0]+YY*kvecs[idx,1]))
+
+            plt.imshow(rho.real,
+                       extent=[0., domain_lengths[0],
+                               0., domain_lengths[1]],
+                       origin='lower',
+                       cmap=mpl.cm.bone_r)
+            plt.colorbar()
+            pltname = 'phi_%07d.png' % step
+            plt.savefig(pltname)
+
+            plt.clf()
+
+    the_particles.accelerate(the_depinterp)
+
+the_particles.half_move_forward()

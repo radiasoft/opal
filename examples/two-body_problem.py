@@ -102,13 +102,13 @@ weight = []
 #vel = [0.1, 0.]
 #weight.append(1.)
 #the_particles.add_particle(pos, vel)
-pos = [0.5*(simulation_lengths[0]+0.5), 0.5*simulation_lengths[1]+0.1]
+pos = [0.5*(simulation_lengths[0]+1.), 0.5*simulation_lengths[1]+0.1]
 vel = [0., 1.e2]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
-pos = [0.5*(simulation_lengths[0]-0.5), 0.5*simulation_lengths[1]+0.1]
+pos = [0.5*(simulation_lengths[0]-1.), 0.5*simulation_lengths[1]+0.1]
 vel = [0., -1.e2]
-weight = -1.
+weight = -2.
 the_particles.add_particle(pos, vel, weight)
 # Run the simulation
 ptcl_history = []
@@ -147,7 +147,7 @@ for idx in range(0, nsteps):
         for idx in range(0, np.shape(kvecs)[0]):
             potential += phi[idx]*np.exp(1.j*(XX*kvecs[idx,0]+YY*kvecs[idx,1]))
 
-        potential *= constants.elementary_charge
+        #potential *= constants.elementary_charge
 
         #plt.contour(XX, YY, potential.real)
 

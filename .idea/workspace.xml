@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-body_problem.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-stream_instability.py" afterPath="$PROJECT_DIR$/examples/two-stream_instability.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -28,48 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="two-body_problem.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="3450">
-              <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
-              <folding>
-                <element signature="e#188#249#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="two-stream_instability.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/two-stream_instability.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9322799" vertical-offset="1267" max-vertical-offset="1770">
-              <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.2877698" vertical-offset="540" max-vertical-offset="2790">
+              <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
               <folding>
                 <element signature="e#216#277#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="802" max-vertical-offset="1695">
-              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-              <folding>
-                <element signature="e#22#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1155">
-              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -95,9 +60,9 @@
         <option value="$PROJECT_DIR$/examples/spectral_electrostatic.py" />
         <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
         <option value="$PROJECT_DIR$/opal/auxiliary/constants.py" />
-        <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
         <option value="$PROJECT_DIR$/tests/integration_tests/coulomb_interaction.py" />
         <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
+        <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
         <option value="$PROJECT_DIR$/examples/two-body_problem.py" />
         <option value="$PROJECT_DIR$/examples/two-stream_instability.py" />
       </list>
@@ -292,7 +257,7 @@
       <recent name="$PROJECT_DIR$/opal" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.spectral_electrostatic">
+  <component name="RunManager" selected="Python.two-stream_instability">
     <configuration default="false" name="tent_dfes (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -519,8 +484,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.spectral_electrostatic" />
-        <item index="1" class="java.lang.String" itemvalue="Python.two-stream_instability" />
+        <item index="0" class="java.lang.String" itemvalue="Python.two-stream_instability" />
+        <item index="1" class="java.lang.String" itemvalue="Python.spectral_electrostatic" />
         <item index="2" class="java.lang.String" itemvalue="Python.coulomb_interaction" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in opal" />
         <item index="4" class="java.lang.String" itemvalue="Python.tent_dfes (1)" />
@@ -625,7 +590,11 @@
       <created>1438635264275</created>
       <updated>1438635264275</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Change was straightforward to implement and test. Allows multiple particle species to be added to rho.">
+      <created>1438636058719</created>
+      <updated>1438636058719</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -689,7 +658,8 @@
     <MESSAGE value="Resolved a sign difference between charge deposition and force interpolation related to complex conjugate pairs appearing in the Lagrangian. Still computing accelerations that are too large, and not sure why." />
     <MESSAGE value="Tracked down presence of Fourier terms. Large number of modes now predicts the correct relative acceleration to within 1%, which particle shapes which are ~10% of the particle separation, so errors are as one would expect from shapes with quadrupole moments in their fields, as we have for our tent functions." />
     <MESSAGE value="Creating two-stream instability example. Committing because I have to change the charge deposition so the field solve is called in compute_forces instead of deposit_sources." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating two-stream instability example. Committing because I have to change the charge deposition so the field solve is called in compute_forces instead of deposit_sources." />
+    <MESSAGE value="Change was straightforward to implement and test. Allows multiple particle species to be added to rho." />
+    <option name="LAST_COMMIT_MESSAGE" value="Change was straightforward to implement and test. Allows multiple particle species to be added to rho." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -704,21 +674,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/opal/boundaries/particle_boundaries.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="390">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="559" max-vertical-offset="1005">
-          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="2070">
@@ -1040,47 +995,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/periodic_x.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/periodic_y.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/vxy_scatter.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/xy_scatter.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
-          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="588" max-vertical-offset="1155">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="3450">
-          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
-          <folding>
-            <element signature="e#188#249#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="1695">
+        <state vertical-scroll-proportion="-0.049661398" vertical-offset="1057" max-vertical-offset="1695">
           <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
             <element signature="e#22#40#0" expanded="true" />
@@ -1088,10 +1013,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40632054" vertical-offset="2055" max-vertical-offset="3450">
+          <caret line="149" column="9" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+          <folding>
+            <element signature="e#188#249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-stream_instability.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9322799" vertical-offset="1267" max-vertical-offset="1770">
-          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2877698" vertical-offset="540" max-vertical-offset="2790">
+          <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
           <folding>
             <element signature="e#216#277#0" expanded="true" />
           </folding>
