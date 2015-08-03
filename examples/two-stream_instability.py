@@ -10,6 +10,7 @@ from opal.interpolaters_depositers import tent_dfes as depinterp
 from opal.particles import non_rel_ptcl as ptcls
 from opal.boundaries import particle_boundaries
 from opal.auxiliary import constants
+import random
 
 import numpy as np
 
@@ -32,7 +33,8 @@ dt = 1./(omega_p_res*plasma_frequency)
 
 domain_lengths = np.array([20.*debye_length, 10.*debye_length])
 ptcls_per_debye = 10
-ptcl_width = np.array([debye_length/2., debye_length/2.])
+ptcl_width = np.array([debye_length/ptcls_per_debye,
+                       debye_length/ptcls_per_debye])
 
 num_ptcls_plasma = np.product(domain_lengths)*plasma_density
 num_macro_plasma = int((np.product(
@@ -92,3 +94,19 @@ the_fields    = dfe.discrete_fourier_electrostatic(sim_parameters)
 the_boundary  = particle_boundaries.particle_boundaries(sim_parameters)
 the_boundary.add_boundary(my_boundary)
 the_depinterp.add_field(the_fields)
+
+# Create particles from the parameters
+for idx in range(0, num_macro_plasma):
+    pos = np.array([random.random()*domain_lengths[0],
+                    random.random()*domain_lengths[1]])
+    vel = np.array([random.gauss(0., plasma_temp),
+                    random.gauss(0., plasma_temp)])
+    the_particles.add_particle(pos, vel, macro_weight)
+
+for idx in range(0, num_macro_beam):
+    pos = np.array([random.random()*domain_lengths[0],
+                    random.random()*beam_width+0.5*domain_lengths[1]])
+    vel = np.array([random.gauss(0., plasma_temp),
+                    random.gauss(0., plasma_temp)])
+    the_particles.add_particle(pos, vel, macro_weight)
+

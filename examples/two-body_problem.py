@@ -25,9 +25,9 @@ import numpy as np
 
 dimensions = 2
 dt = 1.e-8
-nsteps = 2*10**5
-plot_potential = False
-plot_diagnostics = True
+nsteps = 1#2*10**5
+plot_potential = True
+plot_diagnostics = False
 
 # Particle properties
 num_particles = 2
@@ -133,9 +133,9 @@ for idx in range(0, nsteps):
                                   the_particles.vel,
                                   the_particles.weights)
 
-    acceleration = the_depinterp.compute_forces(the_particles.pos,
-                                                the_particles.vel,
-                                                the_particles.weights)
+    #acceleration = the_depinterp.compute_forces(the_particles.pos,
+    #                                            the_particles.vel,
+    #                                            the_particles.weights)
 
     the_particles.accelerate(the_depinterp)
 

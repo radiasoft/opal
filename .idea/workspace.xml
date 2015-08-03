@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/integration_tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/integration_tests/coulomb_interaction.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/two-stream_instability.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-body_problem.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-stream_instability.py" afterPath="$PROJECT_DIR$/examples/two-stream_instability.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="opal.iws" />
@@ -33,8 +31,8 @@
       <file leaf-file-name="two-body_problem.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="3450">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="86" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="3450">
+              <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
               <folding>
                 <element signature="e#188#249#0" expanded="true" />
               </folding>
@@ -42,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="two-stream_instability.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="two-stream_instability.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/two-stream_instability.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="980" max-vertical-offset="1485">
-              <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.9322799" vertical-offset="1267" max-vertical-offset="1770">
+              <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding>
                 <element signature="e#216#277#0" expanded="true" />
               </folding>
@@ -54,14 +52,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tent_dfes.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.5617979" vertical-offset="0" max-vertical-offset="1650">
-              <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="802" max-vertical-offset="1695">
+              <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding>
                 <element signature="e#22#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="712" max-vertical-offset="1155">
+              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -205,6 +213,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="fields" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opal" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="auxiliary" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -266,7 +292,7 @@
       <recent name="$PROJECT_DIR$/opal" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.two-stream_instability">
+  <component name="RunManager" selected="Python.spectral_electrostatic">
     <configuration default="false" name="tent_dfes (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -493,8 +519,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.two-stream_instability" />
-        <item index="1" class="java.lang.String" itemvalue="Python.spectral_electrostatic" />
+        <item index="0" class="java.lang.String" itemvalue="Python.spectral_electrostatic" />
+        <item index="1" class="java.lang.String" itemvalue="Python.two-stream_instability" />
         <item index="2" class="java.lang.String" itemvalue="Python.coulomb_interaction" />
         <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in opal" />
         <item index="4" class="java.lang.String" itemvalue="Python.tent_dfes (1)" />
@@ -595,13 +621,18 @@
       <created>1438041968959</created>
       <updated>1438041968959</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Creating two-stream instability example. Committing because I have to change the charge deposition so the field solve is called in compute_forces instead of deposit_sources.">
+      <created>1438635264275</created>
+      <updated>1438635264275</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1779" y="-8" width="1440" height="873" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.49964765" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -610,13 +641,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5003524" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37516513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37615895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -658,7 +688,8 @@
     <MESSAGE value="Fixed bug where there is a -x instead of x in the charge deposition. This explains the error in computing the potential everywhere, and also resolved a bug in Newton's Third Law, which is now satisfied. The issue now is the magnitude of the force, which is off and requires detailed going through the algorithm and accounting for every little numerical factor." />
     <MESSAGE value="Resolved a sign difference between charge deposition and force interpolation related to complex conjugate pairs appearing in the Lagrangian. Still computing accelerations that are too large, and not sure why." />
     <MESSAGE value="Tracked down presence of Fourier terms. Large number of modes now predicts the correct relative acceleration to within 1%, which particle shapes which are ~10% of the particle separation, so errors are as one would expect from shapes with quadrupole moments in their fields, as we have for our tent functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tracked down presence of Fourier terms. Large number of modes now predicts the correct relative acceleration to within 1%, which particle shapes which are ~10% of the particle separation, so errors are as one would expect from shapes with quadrupole moments in their fields, as we have for our tent functions." />
+    <MESSAGE value="Creating two-stream instability example. Committing because I have to change the charge deposition so the field solve is called in compute_forces instead of deposit_sources." />
+    <option name="LAST_COMMIT_MESSAGE" value="Creating two-stream instability example. Committing because I have to change the charge deposition so the field solve is called in compute_forces instead of deposit_sources." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -684,6 +715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="559" max-vertical-offset="1005">
           <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -711,6 +743,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -725,6 +758,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="675">
           <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -752,6 +786,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -793,6 +828,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -817,6 +853,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="1125">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -989,13 +1026,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="1065">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
-          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,6 +1034,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1162" max-vertical-offset="1890">
           <caret line="37" column="37" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+          <folding>
+            <element signature="e#145#206#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1026,32 +1060,40 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="915" max-vertical-offset="3450">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="86" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1905" max-vertical-offset="3450">
+          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
           <folding>
             <element signature="e#188#249#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/two-stream_instability.py">
+    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="980" max-vertical-offset="1485">
-          <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="870" max-vertical-offset="1695">
+          <caret line="69" column="21" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
           <folding>
-            <element signature="e#216#277#0" expanded="true" />
+            <element signature="e#22#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
+    <entry file="file://$PROJECT_DIR$/examples/two-stream_instability.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5617979" vertical-offset="0" max-vertical-offset="1650">
-          <caret line="76" column="18" selection-start-line="76" selection-start-column="18" selection-end-line="76" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.9322799" vertical-offset="1267" max-vertical-offset="1770">
+          <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
-            <element signature="e#22#40#0" expanded="true" />
+            <element signature="e#216#277#0" expanded="true" />
           </folding>
         </state>
       </provider>

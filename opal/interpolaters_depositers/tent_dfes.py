@@ -14,6 +14,8 @@ class tent_dfes:
         self.charge = pd['charge']
         self.fourier_factor = (2.*np.pi)**pd['dimensions']
 
+        self.rho = 0.
+
 
     def add_field(self, fields):
         """ Add a field to the interpolater/depositer.
@@ -64,7 +66,8 @@ class tent_dfes:
 
         efield = np.zeros(np.shape(vel), dtype=np.complex)
 
-        phimodes = self.fields.get_fields()
+        phimodes = self.fields.compute_fields(self.rho)
+        self.rho = 0.
         coeffs = phimodes*self.shape_function
 
         for idx in range(0, np.shape(vel)[0]):
@@ -98,8 +101,8 @@ class tent_dfes:
 
         fourier = np.exp(-1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
-        rho = self.charge*np.dot(weight, fourier)/self.fourier_factor
+        self.rho += self.charge*np.dot(weight, fourier)/self.fourier_factor
 
-        self.fields.compute_fields(rho)
+    def get_rho(self):
 
-        return rho
+        return self.rho
