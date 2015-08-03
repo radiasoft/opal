@@ -74,7 +74,7 @@ class tent_dfes:
             efield[idx] = np.dot(fourier, self.k_modes)
             efield[idx] *= weights[idx]
 
-        efield *= -1.j/self.fourier_factor
+        efield *= 1.j/self.fourier_factor
 
         bfield = np.zeros(np.shape(efield))
 
