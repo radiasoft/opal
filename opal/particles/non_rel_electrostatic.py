@@ -27,6 +27,7 @@ class non_rel_electrostatic:
             params_dictionary['charge']*params_dictionary['macro weight']
         self.mass = \
             params_dictionary['mass']*params_dictionary['macro weight']
+        self.wgt = params_dictionary['macro weight']
         self.dt = params_dictionary['dt']
 
         self.charge2mass = self.charge/self.mass
@@ -80,8 +81,6 @@ class non_rel_electrostatic:
             interpolates the fields from the solver.
         """
         efield, bfield = interpolater.compute_forces(self.pos, self.vel)
-#        plt.quiver(self.pos[:,0], self.pos[:,1], efield[:,0], efield[:,1])
-#        plt.show()
         self.vel += efield*self.dtc2m
 
 
@@ -94,6 +93,24 @@ class non_rel_electrostatic:
         """
         depositer.deposit_sources(self.pos, self.vel, self.charge)
 
+
     def get_particles(self):
 
         return self.pos, self.vel
+
+
+    def compute_energy(self):
+        """ Compute the total kinetic energy of the particles
+
+        Returns:
+            KE (scalar) total kinetic energy in ergs
+        """
+
+        ke = 0.
+
+        for vels in self.vel:
+            ke += np.dot(vels, vels)
+
+        ke *= self.wgt*self.mass
+
+        return ke

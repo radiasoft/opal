@@ -9,6 +9,7 @@ class non_rel_ptcl:
 
         self.num_ptcls = pd['number of particles']
         self.dimension = pd['dimensions']
+        self.mass = pd['mass']
         self.pos = np.zeros((self.num_ptcls, self.dimension))
         self.vel = np.zeros((self.num_ptcls, self.dimension))
         self.weights = np.zeros(self.num_ptcls)
@@ -64,3 +65,33 @@ class non_rel_ptcl:
             self.exists.append(True)
 
             added_ptcl = True
+
+
+    def compute_energy(self):
+        """ Compute the total kinetic energy of the particles
+
+        Returns:
+            KE (scalar) total kinetic energy in ergs
+        """
+
+        ke = 0.
+
+        for idx in range(0, np.shape(self.vel)[0]):
+            ke += 0.5*self.mass*abs(self.weights[idx])*\
+                  np.dot(self.vel[idx],self.vel[idx])
+
+        return ke
+
+
+    def compute_momentum(self):
+        """ Compute the total momentum of the particles
+
+        Returns
+            P (vector) total momentum
+        """
+
+        p = 0.
+        for idx in range(0, np.shape(self.vel)[0]):
+            p += self.mass * abs(self.weights[idx])*self.vel[idx]
+
+        return p

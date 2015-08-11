@@ -6,3 +6,4 @@ __author__ = 'swebb'
 
 elementary_charge = 4.8032068e-10 # esu/stat-Coulomb
 electron_mass = 9.10938291e-28 # grams
+c = 29979245800. #cm/sec

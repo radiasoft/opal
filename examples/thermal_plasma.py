@@ -1,11 +1,9 @@
 __author__ = 'swebb'
-
-"""Example demonstration of the two-stream instability using the
-multisymplectic electrostatic algorithm. The beam is assumed initially cold,
-while the plasma has some RMS velocity spread.
-
-Recall that all units are CGS.
 """
+Test of the energy conservation
+"""
+
+
 
 from opal.fields import discrete_fourier_electrostatic as dfe
 from opal.interpolaters_depositers import tent_dfes as depinterp
@@ -23,41 +21,31 @@ mpl.rc('text', usetex=True)
 
 dimensions = 2
 
+# Plasma parameters
 plasma_density = 1.e17
-beam_density = 1.e17
-
-beam_vel = 1.e5 # cm/sec
-plasma_temp = 1.e20 # (cm/sec)^2
+plasma_temp = 1.e14 # (cm/sec)^2
 
 plasma_frequency = np.sqrt(4.*np.pi*plasma_density*
                            constants.elementary_charge/constants.electron_mass)
-omega_p_res = 10 # Steps per plasma frequency
-#debye_length = np.sqrt(4.*np.pi*plasma_density*constants.elementary_charge**2/
-#                       (0.5*constants.electron_mass*plasma_temp))
-plasma_wavelength = constants.c
+plasma_wavelength = constants.c/plasma_frequency
 
-n_plasma_periods = 20
-n_steps = n_plasma_periods*omega_p_res
-n_steps = 1
+# Time step resolutions
+omega_p_res = 4 # Steps per plasma frequency
+dt = 2.*np.pi/(omega_p_res*plasma_frequency)
+n_plasma_oscillations = 1
+n_steps = omega_p_res*n_plasma_oscillations
 
-beam_width = 0.5*debye_length
+domain_lengths = np.array([10.*plasma_wavelength, 10.*plasma_wavelength])
 
-dt = 1./(omega_p_res*plasma_frequency)
-
-domain_lengths = np.array([10.*debye_length, 10.*debye_length])
-
-ptcls_per_debye = 10
-ptcl_width = np.array([2*debye_length/ptcls_per_debye,
-                       2*debye_length/ptcls_per_debye])
-
+# Macroparticle properties
+ptcl_width = np.array([.5*plasma_wavelength, .5*plasma_wavelength])
+ptcls_per_plasma_wavelength = 10
 num_ptcls_plasma = np.product(domain_lengths)*plasma_density
 num_macro_plasma = int((np.product(
-                        domain_lengths)/debye_length**2)*ptcls_per_debye)
+                        domain_lengths)/plasma_wavelength**2)*
+                       ptcls_per_plasma_wavelength)
 # Use one macro_weight for simplicity
 macro_weight = num_ptcls_plasma/num_macro_plasma
-
-num_ptcls_beam = domain_lengths[0]*beam_width*beam_density
-num_macro_beam = int(num_ptcls_beam/macro_weight)
 
 delta_k = 2.*np.pi/domain_lengths
 modes = np.round(2*domain_lengths/ptcl_width)
@@ -65,8 +53,8 @@ n_modes = np.zeros(np.shape(modes), dtype='int')
 for idx in range(np.shape(n_modes)[0]):
     n_modes[idx] = int(modes[idx])
 
+dump_period = 100
 plot_potential = True
-dump_period = omega_p_res/4
 
 ####
 #
@@ -90,7 +78,7 @@ my_boundary = periodic_boundary(domain_lengths)
 
 sim_parameters = {}
 
-sim_parameters['number of particles'] = num_macro_beam+num_macro_plasma
+sim_parameters['number of particles'] = num_macro_plasma
 sim_parameters['charge'] = -constants.elementary_charge
 sim_parameters['mass'] = constants.electron_mass
 
@@ -119,18 +107,15 @@ the_boundary.add_boundary(my_boundary)
 the_depinterp.add_field(the_fields)
 
 # Create particles from the parameters
+x = []
+y = []
 for idx in range(0, num_macro_plasma):
-    pos = np.array([random.random()*domain_lengths[0],
-                    random.random()*domain_lengths[1]])
+    pos = np.array([0.2*domain_lengths[0],
+                    0.2*domain_lengths[1]])
     vel = np.array([random.gauss(0., plasma_temp),
                     random.gauss(0., plasma_temp)])
-    the_particles.add_particle(pos, vel, macro_weight)
-
-for idx in range(0, num_macro_beam):
-    pos = np.array([random.random()*domain_lengths[0],
-                    (0.5 - random.random())*beam_width+0.5*domain_lengths[1]])
-    vel = np.array([random.gauss(0., plasma_temp),
-                    random.gauss(0., plasma_temp)])
+    x.append(pos[0]/domain_lengths[0])
+    y.append(pos[1]/domain_lengths[1])
     the_particles.add_particle(pos, vel, macro_weight)
 
 ####
@@ -139,28 +124,63 @@ for idx in range(0, num_macro_beam):
 #
 ####
 
-x = np.arange(0., domain_lengths[0], 0.1*debye_length)
-y = np.arange(0., domain_lengths[1], 0.1*debye_length)
-
+x = np.arange(0., domain_lengths[0], 0.05*domain_lengths[0])
+y = np.arange(0., domain_lengths[1], 0.05*domain_lengths[1])
 XX, YY = np.meshgrid(x, y)
+
+E = []
+ptclE = []
+fieldE = []
+intE = []
+t = []
 
 the_particles.half_move_back()
 
 for step in range(0, n_steps):
-    print 'Running time step', step
-    the_particles.move()
+    if step%10 == 0:
+        print 'Running time step', step
 
+    # Update sequence
+    the_particles.move()
     the_depinterp.deposit_sources(the_particles.pos,
                                   the_particles.vel,
                                   the_particles.weights)
+    the_particles.accelerate(the_depinterp)
 
+    # Histories
     if step%dump_period == 0:
 
-        print 'Generating plot'
+        the_depinterp.reset()
+        the_fields.reset()
+
+        the_depinterp.deposit_sources(the_particles.pos,
+                              the_particles.vel,
+                              the_particles.weights)
+
+        rhotilde = the_depinterp.get_rho()
+        the_fields.compute_fields(rhotilde)
+        phitilde = the_fields.get_fields()
 
         if plot_potential:
-            #phi = the_fields.get_fields()
-            rhotilde = the_depinterp.get_rho()
+
+            kvecs = the_fields.get_kvectors()
+            phi = 0.
+            # compute the test charge force at 1 cm away from the point charge.
+            for idx in range(0, np.shape(kvecs)[0]):
+                phi += \
+                    phitilde[idx]*np.exp(1.j*(XX*kvecs[idx,0]+YY*kvecs[idx,1]))
+
+            plt.imshow(phi.real,
+                       extent=[0., domain_lengths[0],
+                               0., domain_lengths[1]],
+                       origin='lower',
+                       cmap=mpl.cm.bone_r)
+            plt.colorbar()
+            pltname = 'phi_%07d.png' % step
+            plt.savefig(pltname)
+
+            plt.clf()
+
             kvecs = the_fields.get_kvectors()
             rho = 0.
             # compute the test charge force at 1 cm away from the point charge.
@@ -179,6 +199,40 @@ for step in range(0, n_steps):
 
             plt.clf()
 
-    the_particles.accelerate(the_depinterp)
+        rhophi = the_depinterp.compute_energy()
+        U = the_fields.compute_energy()
+        ke = the_particles.compute_energy()
+
+        fieldE.append(U)
+        ptclE.append(ke)
+        intE.append(rhophi)
+        E.append(ke + U + rhophi)
+        t.append(step*dt)
 
 the_particles.half_move_forward()
+
+the_depinterp.reset()
+the_fields.reset()
+
+the_depinterp.deposit_sources(the_particles.pos,
+                      the_particles.vel,
+                      the_particles.weights)
+
+rhotilde = the_depinterp.get_rho()
+the_fields.compute_fields(rhotilde)
+phitilde = the_fields.get_fields()
+
+rhophi = the_depinterp.compute_energy()
+U = the_fields.compute_energy()
+ke = the_particles.compute_energy()
+
+fieldE.append(U)
+ptclE.append(ke)
+intE.append(rhophi)
+E.append(ke + U + rhophi)
+t.append(step*dt)
+
+print 'E =', E
+
+plt.plot(t, E, t, ptclE, t, fieldE, t, intE)
+plt.show()

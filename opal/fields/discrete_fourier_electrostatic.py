@@ -13,6 +13,8 @@ class discrete_fourier_electrostatic:
         self.dk = params_dictionary['delta k']
         dims = params_dictionary['dimensions']
 
+        self.fourier_factor = (2.*np.pi)**dims
+
         # Use linear strides to generate the k-space vectors
         # Positive and negative k-vectors
         kmin = np.zeros(dims)
@@ -49,7 +51,7 @@ class discrete_fourier_electrostatic:
             the k-vectors
         """
 
-        self.phi = 8.*np.pi*rho/self.k_squared
+        self.phi = -4.*np.pi*rho/self.k_squared
 
         return self.phi
 
@@ -68,6 +70,30 @@ class discrete_fourier_electrostatic:
 
         return self.k_vectors
 
+
     def get_type(self):
 
         return 'spectral'
+
+
+    def compute_energy(self):
+        """ Compute the total energy stored in the electrostatic fields
+
+        Returns:
+            U (scalar) the total field energy in ergs
+        """
+
+        U = 0.
+        for idx in range(0, np.shape(self.phi)[0]):
+            U += self.phi[idx]*np.conj(self.phi[idx]) * self.k_squared[idx]
+
+        U *= -1./(8.*np.pi)
+
+        return U.real
+
+
+    def reset(self):
+        """ Reset to a pre-step state
+        """
+
+        self.phi = 0.

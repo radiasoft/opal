@@ -13,7 +13,6 @@ class tent_dfes:
         self.charge2mass = pd['charge']/pd['mass']
         self.charge = pd['charge']
         self.fourier_factor = (2.*np.pi)**pd['dimensions']
-
         self.rho = 0.
 
 
@@ -77,7 +76,7 @@ class tent_dfes:
             efield[idx] = np.dot(fourier, self.k_modes)
             efield[idx] *= weights[idx]
 
-        efield *= 1.j/self.fourier_factor
+        efield *= 1.j
 
         bfield = np.zeros(np.shape(efield))
 
@@ -101,8 +100,24 @@ class tent_dfes:
 
         fourier = np.exp(-1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
-        self.rho += self.charge*np.dot(weight, fourier)/self.fourier_factor
+        self.rho += self.charge*np.dot(weight, fourier)#/self.fourier_factor
 
     def get_rho(self):
 
         return self.rho
+
+
+    def compute_energy(self):
+
+        rhotilde = self.get_rho()
+        phitilde = self.fields.get_fields()
+        rhophi = np.sum(rhotilde*phitilde)
+
+        return rhophi.real
+
+
+    def reset(self):
+        """ Resets to a pre-step case
+        """
+
+        self.rho = 0.
