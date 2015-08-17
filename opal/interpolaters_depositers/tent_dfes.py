@@ -109,7 +109,7 @@ class tent_dfes:
 
     def compute_energy(self):
 
-        rhotilde = self.get_rho()
+        rhotilde = np.conj(self.get_rho())
         phitilde = self.fields.get_fields()
         rhophi = np.sum(rhotilde*phitilde)
 

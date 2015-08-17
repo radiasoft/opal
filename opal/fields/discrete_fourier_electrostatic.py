@@ -87,7 +87,7 @@ class discrete_fourier_electrostatic:
         for idx in range(0, np.shape(self.phi)[0]):
             U += self.phi[idx]*np.conj(self.phi[idx]) * self.k_squared[idx]
 
-        U *= -1./(8.*np.pi)
+        U *= 1./(8.*np.pi)
 
         return U.real
 
