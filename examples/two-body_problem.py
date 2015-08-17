@@ -25,7 +25,7 @@ import scipy.signal as signal
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 1.e-9
+dt = 5.e-9
 nsteps = 10**5
 plot_potential = False
 plot_diagnostics = True
@@ -480,5 +480,14 @@ if plot_diagnostics:
 
     plt.clf()
 
+    r = np.sqrt((np.array(x1) - np.array(x2))**2 +
+                (np.array(y1) - np.array(y2))**2)
+
+    plt.plot(t, r)
+    plt.xlabel(r'$t$ [sec]')
+    plt.ylabel(r'$r(t)$ [cm]')
+    plt.savefig('radius.png')
+
+    plt.clf()
 
 

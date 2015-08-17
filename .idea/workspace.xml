@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5e479842-5f58-447b-944b-10a2d746b5a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" afterPath="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" afterPath="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/two-body_problem.py" afterPath="$PROJECT_DIR$/examples/two-body_problem.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -28,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="two-body_problem.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="two-body_problem.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1318" max-vertical-offset="7350">
-              <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+            <state vertical-scroll-proportion="-6.0441175" vertical-offset="2475" max-vertical-offset="7485">
+              <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
               <folding>
                 <element signature="e#188#249#0" expanded="true" />
               </folding>
@@ -40,11 +39,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tent_dfes.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="energy.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/energy.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tent_dfes.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8235294" vertical-offset="1385" max-vertical-offset="1890">
-              <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1890">
+              <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -53,18 +59,8 @@
       <file leaf-file-name="discrete_fourier_electrostatic.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="905" max-vertical-offset="1515">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="non_rel_ptcl.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1530">
-              <caret line="37" column="60" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1515">
+              <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -95,9 +91,9 @@
         <option value="$PROJECT_DIR$/examples/thermal_plasma.py" />
         <option value="$PROJECT_DIR$/opal/particles/non_rel_electrostatic.py" />
         <option value="$PROJECT_DIR$/opal/particles/non_rel_ptcl.py" />
+        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
         <option value="$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py" />
         <option value="$PROJECT_DIR$/examples/two-body_problem.py" />
-        <option value="$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py" />
       </list>
     </option>
   </component>
@@ -641,7 +637,11 @@
       <created>1439831183143</created>
       <updated>1439831183143</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="There is a bug in the energy computation which seems related to some conspiracy of sign errors in the particle move that leads to poor energy behavior.">
+      <created>1439844987254</created>
+      <updated>1439844987254</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -683,7 +683,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Confirmed that the tent_dfes class is computing the right phase and the right charge using the Fourier transform and the dot product with the charge." />
     <MESSAGE value="Fixed a bug in computing the phase in the inverse Fourier transform in the test.&#10;&#10;Removed commented out plots from the interp/dep." />
     <MESSAGE value="Test produces the correct Fourier components for rho." />
     <MESSAGE value="Test of computing phi from rho returns correct values. Removing some commented out plot/print diagnostics from the various classes to simplify the test." />
@@ -708,7 +707,8 @@
     <MESSAGE value="Two-stream simulation runs all the way through, but is very noisy and for some reason isn't capturing the right charge density with the deposition." />
     <MESSAGE value="Two-body problem demonstrates exact momentum conservation and energy is very close to conserved. Constants have speed of light added. Energy computation added to each class to compute kinetic, capacitive, and field energies. Committing to store progress." />
     <MESSAGE value="Removing an unused particle class to avoid confusion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removing an unused particle class to avoid confusion" />
+    <MESSAGE value="There is a bug in the energy computation which seems related to some conspiracy of sign errors in the particle move that leads to poor energy behavior." />
+    <option name="LAST_COMMIT_MESSAGE" value="There is a bug in the energy computation which seems related to some conspiracy of sign errors in the particle move that leads to poor energy behavior." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1002,17 +1002,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/periodic_x.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
+    <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1530">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/radius.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/examples/momentum.png">
+    <entry file="file://$PROJECT_DIR$/examples/energy_envelopes.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1022,7 +1020,33 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/energy.png">
+    <entry file="file://$PROJECT_DIR$/examples/momentum.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/periodic_x.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1550" max-vertical-offset="1890">
+          <caret line="103" column="22" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1515">
+          <caret line="87" column="14" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/radius.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1032,42 +1056,18 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/energy_envelopes.png">
+    <entry file="file://$PROJECT_DIR$/examples/energy.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/two-body_problem.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="7350">
-          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+        <state vertical-scroll-proportion="-6.0441175" vertical-offset="2475" max-vertical-offset="7485">
+          <caret line="28" column="14" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
           <folding>
             <element signature="e#188#249#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/particles/non_rel_ptcl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1530">
-          <caret line="37" column="60" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/fields/discrete_fourier_electrostatic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1175" max-vertical-offset="1515">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/opal/interpolaters_depositers/tent_dfes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8235294" vertical-offset="1385" max-vertical-offset="1890">
-          <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>

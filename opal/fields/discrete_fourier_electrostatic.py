@@ -49,7 +49,7 @@ class discrete_fourier_electrostatic:
             the k-vectors
         """
 
-        self.phi = 4.*np.pi*np.conj(rho)/self.k_squared
+        self.phi = 4.*np.pi*rho/self.k_squared
 
         return self.phi
 
@@ -85,7 +85,7 @@ class discrete_fourier_electrostatic:
         for idx in range(0, np.shape(self.phi)[0]):
             U += self.phi[idx]*np.conj(self.phi[idx]) * self.k_squared[idx]
 
-        U *= 1./(8.*np.pi)
+        U *= -1./(8.*np.pi)
 
         return U.real
 
