@@ -26,7 +26,7 @@ import scipy.signal as signal
 
 dimensions = 2
 dt = 1.e-9
-nsteps = 10**6
+nsteps = 10**5
 plot_potential = False
 plot_diagnostics = True
 

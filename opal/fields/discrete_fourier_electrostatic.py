@@ -13,8 +13,6 @@ class discrete_fourier_electrostatic:
         self.dk = params_dictionary['delta k']
         dims = params_dictionary['dimensions']
 
-        self.fourier_factor = (2.*np.pi)**dims
-
         # Use linear strides to generate the k-space vectors
         # Positive and negative k-vectors
         kmin = np.zeros(dims)
@@ -51,7 +49,7 @@ class discrete_fourier_electrostatic:
             the k-vectors
         """
 
-        self.phi = -4.*np.pi*rho/self.k_squared
+        self.phi = 4.*np.pi*np.conj(rho)/self.k_squared
 
         return self.phi
 

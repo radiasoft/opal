@@ -12,7 +12,6 @@ class tent_dfes:
         self.ptcl_size = pd['particle size']
         self.charge2mass = pd['charge']/pd['mass']
         self.charge = pd['charge']
-        self.fourier_factor = (2.*np.pi)**pd['dimensions']
         self.rho = 0.
 
 
@@ -74,9 +73,9 @@ class tent_dfes:
             fourier = np.exp(1.j*(np.dot(pos[idx], self.k_modes.T)))
             fourier *= coeffs
             efield[idx] = np.dot(fourier, self.k_modes)
-            efield[idx] *= weights[idx]
+            efield[idx] *= weights[idx]/abs(weights[idx])
 
-        efield *= 1.j
+        efield *= -1.j
 
         bfield = np.zeros(np.shape(efield))
 
@@ -100,7 +99,7 @@ class tent_dfes:
 
         fourier = np.exp(-1.j*np.dot(pos, self.k_modes.T))
         fourier *= self.shape_function
-        self.rho += self.charge*np.dot(weight, fourier)#/self.fourier_factor
+        self.rho += self.charge*np.dot(weight, fourier)
 
     def get_rho(self):
 
