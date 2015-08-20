@@ -8,6 +8,8 @@ from opal.interpolaters_depositers import tent_dfes as depinterp
 from opal.particles import non_rel_ptcl as ptcls
 from opal.boundaries import particle_boundaries
 
+import time
+
 from matplotlib import pyplot as plt
 import matplotlib as mpl
 #mpl.rc('font',**{'family':'sans-serif','sans-serif':[
@@ -25,7 +27,7 @@ import scipy.signal as signal
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 5.e-9
+dt = 1.e-8
 nsteps = 10**6
 plot_potential = False
 plot_diagnostics = True
@@ -96,7 +98,7 @@ vel = [0., 1.e3]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
 pos = [0.5*(simulation_lengths[0]-1.), 0.5*simulation_lengths[1]-0.1]
-vel = [0., -1.e3]
+vel = [0., -0.5e3]
 weight = -2.
 the_particles.add_particle(pos, vel, weight)
 # Run the simulation
@@ -159,6 +161,8 @@ t.append(0.)
 
 the_particles.half_move_back()
 
+
+t_i = time.time()
 
 XX, YY = np.meshgrid(x, y)
 for idx in range(0, nsteps):
@@ -243,6 +247,12 @@ for idx in range(0, nsteps):
     the_boundary.apply_boundary(the_particles)
 
     if idx%250 == 0:
+
+        t_f = time.time()
+
+        if not idx == 0:
+            t_left =((t_f - t_i) / idx) * nsteps / 60. -  (t_f - t_i)/60.
+            print 'Estimated complete in', t_left, 'min.'
 
         the_particles.half_move_forward()
 
@@ -336,7 +346,7 @@ if plot_diagnostics:
         rhophi[idx] /= E0
         U[idx] /= E0
 
-    plt.plot(t, E)
+    plt.plot(t, E, c='0.5')
     plt.xlabel('$t$ [sec]')
     plt.ylabel('$\Delta E/E_0$')
     plt.tight_layout()
@@ -354,9 +364,10 @@ if plot_diagnostics:
 
     plt.clf()
 
-    plt.plot(t, KE, label=r'$\frac{1}{2} m \mathbf{v}^2')
-    plt.plot(t, rhophi, label=r'$\rho \phi$')
-    plt.plot(t, U, label=r'$\nabla \varphi \cdot \nabla \varphi$')
+    plt.plot(t, KE, 'darkolivegreen', label=r'$\frac{1}{2} m \mathbf{v}^2')
+    plt.plot(t, rhophi, 'cornflowerblue', label=r'$\rho \phi$')
+    plt.plot(t, U, 'lighsalmon', label=r'$\nabla \varphi \cdot \nabla '
+                                       r'\varphi$')
     plt.legend()
     plt.xlabel('$t$ [sec]')
     plt.ylabel('$E/E_0$')
@@ -456,20 +467,20 @@ if plot_diagnostics:
     maxTKE.append(t[-1])
     minTKE.append(t[-1])
 
-    plt.plot(t, KE, c='r', alpha=0.25)
-    plt.plot(maxTKE, maxKE, c='r',
+    plt.plot(t, KE, c='lightsalmon', alpha=0.25)
+    plt.plot(maxTKE, maxKE, c='lightsalmon',
              label=r'$\frac{1}{2} m \mathbf{v}^2$')
-    plt.plot(minTKE, minKE, c='r')
+    plt.plot(minTKE, minKE, c='lightsalmon')
 
-    plt.plot(t, U, c='b', alpha=0.25)
-    plt.plot(maxTU, maxU, c='b',
+    plt.plot(t, U, c='cornflowerblue', alpha=0.25)
+    plt.plot(maxTU, maxU, c='cornflowerblue',
              label=r'$\nabla \varphi \cdot \nabla \varphi$')
-    plt.plot(minTU, minU, c='b')
+    plt.plot(minTU, minU, c='cornflowerblue')
 
-    plt.plot(t, rhophi, c='g', alpha=0.25)
-    plt.plot(maxTrhophi, maxrhophi, c='g',
+    plt.plot(t, rhophi, c='darkolivegreen', alpha=0.25)
+    plt.plot(maxTrhophi, maxrhophi, c='darkolivegreen',
              label=r'$\rho \varphi$')
-    plt.plot(minTrhophi, minrhophi, c='g')
+    plt.plot(minTrhophi, minrhophi, c='darkolivegreen')
 
     plt.xlabel(r'$t$ [sec]')
     plt.ylabel(r'$\frac{E}{\Sigma E_0^{(i)}}$')
