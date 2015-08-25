@@ -27,10 +27,11 @@ import scipy.signal as signal
 # Set all simulation parameters at the top for convenience
 
 dimensions = 2
-dt = 1.e-8
-nsteps = 10**6
+dt = 5.e-9
+nsteps = 2*10**6
 plot_potential = False
 plot_diagnostics = True
+dump_step=250
 
 # Particle properties
 num_particles = 2
@@ -98,7 +99,7 @@ vel = [0., 1.e3]
 weight = 1.
 the_particles.add_particle(pos, vel, weight)
 pos = [0.5*(simulation_lengths[0]-1.), 0.5*simulation_lengths[1]-0.1]
-vel = [0., -0.5e3]
+vel = [0., -1.e3]
 weight = -2.
 the_particles.add_particle(pos, vel, weight)
 # Run the simulation
@@ -246,7 +247,7 @@ for idx in range(0, nsteps):
 
     the_boundary.apply_boundary(the_particles)
 
-    if idx%250 == 0:
+    if idx%dump_step == 0:
 
         t_f = time.time()
 
@@ -348,29 +349,38 @@ if plot_diagnostics:
 
     plt.plot(t, E, c='0.5')
     plt.xlabel('$t$ [sec]')
-    plt.ylabel('$\Delta E/E_0$')
+    plt.ylabel(r'$\frac{E}{E_0}$')
     plt.tight_layout()
     plt.savefig('energy.png')
 
     plt.clf()
 
+    px0 = mmntmx[0]
+    py0 = mmntmy[0]
+
+    for idx in range(0, len(mmntmx)):
+        mmntmx[idx] -= px0
+        mmntmy[idx] -= py0
+
     plt.plot(t, np.log10(mmntmx), label=r'$\Sigma p_x$')
     plt.plot(t, np.log10(mmntmy), label=r'$\Sigma p_y$')
     plt.xlabel('$t$ [sec]')
-    plt.ylabel('$\log(\Sigma p)$')
+    plt.ylabel(r'$\log(\Delta \Sigma p)$')
     plt.legend()
     plt.tight_layout()
     plt.savefig('momentum.png')
 
     plt.clf()
 
-    plt.plot(t, KE, 'darkolivegreen', label=r'$\frac{1}{2} m \mathbf{v}^2')
-    plt.plot(t, rhophi, 'cornflowerblue', label=r'$\rho \phi$')
-    plt.plot(t, U, 'lighsalmon', label=r'$\nabla \varphi \cdot \nabla '
-                                       r'\varphi$')
+    plt.plot(t, KE, 'darkolivegreen',
+             label=r'$\frac{1}{2} m \mathbf{v}^2$')
+    plt.plot(t, rhophi, 'cornflowerblue',
+             label=r'$\rho \phi$')
+    plt.plot(t, U, 'lightsalmon',
+             label=r'$\nabla \varphi \cdot \nabla \varphi$')
     plt.legend()
     plt.xlabel('$t$ [sec]')
-    plt.ylabel('$E/E_0$')
+    plt.ylabel(r'$\frac{E}{E_0}$')
     #plt.tight_layout()
     plt.savefig('energy_breakdown.png')
 
@@ -501,4 +511,6 @@ if plot_diagnostics:
 
     plt.clf()
 
+t_f = time.time()
 
+print 'simulation took', (t_f - t_i)/60., 'minutes'
