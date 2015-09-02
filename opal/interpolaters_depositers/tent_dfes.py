@@ -1,7 +1,7 @@
 __author__ = 'swebb'
 
 import numpy as np
-from matplotlib import pyplot as plt
+from numba import jit
 
 class tent_dfes:
 
@@ -45,6 +45,7 @@ class tent_dfes:
                 self.shape_function[idx] *= form_factor
 
 
+    @jit
     def compute_forces(self, pos, vel, weights):
         """ Calculates the forces for each particle based on the fields.
         For the discrete Fourier electrostatic class, this is a simple
@@ -85,6 +86,7 @@ class tent_dfes:
         return acceleration
 
 
+    @jit
     def deposit_sources(self, pos, vel, weight):
         """ Calculates the source terms required for the fields and passes
         them off to the fields. Because this class is electrostatic, it only
@@ -106,6 +108,7 @@ class tent_dfes:
         return self.rho
 
 
+    @jit
     def compute_energy(self):
 
         rhotilde = np.conj(self.get_rho())

@@ -1,6 +1,7 @@
 __author__ = 'swebb'
 
 import numpy as np
+from numba import jit
 
 class non_rel_ptcl:
 
@@ -17,21 +18,25 @@ class non_rel_ptcl:
         self.dt = pd['dt']
 
 
+    @jit
     def half_move_back(self):
 
         self.pos -= 0.5*self.dt * self.vel
 
 
+    @jit
     def half_move_forward(self):
 
         self.pos += 0.5*self.dt * self.vel
 
 
+    @jit
     def move(self):
 
         self.pos += self.dt * self.vel
 
 
+    @jit
     def accelerate(self, depinterp):
 
         acceleration = depinterp.compute_forces(self.pos, self.vel,
@@ -67,6 +72,7 @@ class non_rel_ptcl:
             added_ptcl = True
 
 
+    @jit
     def compute_energy(self):
         """ Compute the total kinetic energy of the particles
 
@@ -83,6 +89,7 @@ class non_rel_ptcl:
         return ke
 
 
+    @jit
     def compute_momentum(self):
         """ Compute the total momentum of the particles
 
