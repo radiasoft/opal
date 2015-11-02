@@ -45,7 +45,6 @@ class tent_dfes:
                 self.shape_function[idx] *= form_factor
 
 
-    @jit
     def compute_forces(self, pos, vel, weights):
         """ Calculates the forces for each particle based on the fields.
         For the discrete Fourier electrostatic class, this is a simple
@@ -63,22 +62,15 @@ class tent_dfes:
             of the particles to compute the force.
         """
 
-        efield = np.zeros(np.shape(vel), dtype=np.complex)
-
         phimodes = self.fields.compute_fields(self.rho)
         self.rho = 0.
-        coeffs = phimodes*self.shape_function
 
-        for idx in range(0, np.shape(vel)[0]):
-            # compute e^-ikx first, then add the coefficients and vectors
-            fourier = np.exp(1.j*(np.dot(pos[idx], self.k_modes.T)))
-            fourier *= coeffs
-            efield[idx] = np.dot(fourier, self.k_modes)
-            efield[idx] *= weights[idx]/abs(weights[idx])
-
-        efield *= -1.j
-
-        bfield = np.zeros(np.shape(efield))
+        efield = -1.j*\
+                 np.dot(
+                     phimodes*self.shape_function*
+                     np.exp(1.j*(np.dot(pos, self.k_modes.T))),
+                     self.k_modes)\
+                 *weights/abs(weights)
 
         # Truncate imaginary part that is lingering after sum due to roundoff
         acceleration = self.charge2mass*(efield.real)
@@ -86,7 +78,6 @@ class tent_dfes:
         return acceleration
 
 
-    @jit
     def deposit_sources(self, pos, vel, weight):
         """ Calculates the source terms required for the fields and passes
         them off to the fields. Because this class is electrostatic, it only
@@ -99,16 +90,14 @@ class tent_dfes:
             electrostatic systems.
         """
 
-        fourier = np.exp(-1.j*np.dot(pos, self.k_modes.T))
-        fourier *= self.shape_function
-        self.rho += self.charge*np.dot(weight, fourier)
+        self.rho += self.charge*np.dot(weight,
+                        np.exp(-1.j*np.dot(pos, self.k_modes.T))*self.shape_function)
 
     def get_rho(self):
 
         return self.rho
 
 
-    @jit
     def compute_energy(self):
 
         rhotilde = np.conj(self.get_rho())

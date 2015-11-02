@@ -39,7 +39,6 @@ class discrete_fourier_electrostatic:
                                              self.k_vectors[idx])
 
 
-    @jit
     def compute_fields(self, rho):
         """ Adds to the charge distribution for the electrostatic spectral
         code.
@@ -75,7 +74,6 @@ class discrete_fourier_electrostatic:
         return 'spectral'
 
 
-    @jit
     def compute_energy(self):
         """ Compute the total energy stored in the electrostatic fields
 
