@@ -1,7 +1,7 @@
 __author__ = 'swebb'
 
 import numpy as np
-from numba import jit
+#from numba import jit
 
 class non_rel_ptcl:
 
@@ -35,9 +35,8 @@ class non_rel_ptcl:
 
     def accelerate(self, depinterp):
 
-        acceleration = depinterp.compute_forces(self.pos, self.vel,
+        self.vel += self.dt * depinterp.compute_forces(self.pos, self.vel,
                                                 self.weights)
-        self.vel += self.dt * acceleration
 
 
     def get_particles(self):
