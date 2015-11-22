@@ -1,7 +1,7 @@
 __author__ = 'swebb'
 
 import numpy as np
-from numba import jit
+#from numba import jit
 
 class tent_dfes:
 
@@ -66,11 +66,13 @@ class tent_dfes:
         self.rho = 0.
 
         efield = -1.j*\
-                 np.dot(
+                 np.array(np.matrix(
                      phimodes*self.shape_function*
-                     np.exp(1.j*(np.dot(pos, self.k_modes.T))),
-                     self.k_modes)\
-                 *weights/abs(weights)
+                     np.exp(1.j*(np.dot(pos, self.k_modes.T))))*\
+                 np.matrix(self.k_modes))
+
+        for idx in xrange(0, np.shape(weights)[0]):
+            efield[idx] *= weights[idx]/abs(weights[idx])
 
         # Truncate imaginary part that is lingering after sum due to roundoff
         acceleration = self.charge2mass*(efield.real)
